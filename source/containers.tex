@@ -616,7 +616,7 @@ linear													\\ \rowsep
 \tcode{a = t}             &
   \tcode{X\&}             &
   \requires\ \tcode{T} is
-  \tcode{CopyInsertable} into \tcode{X}
+  \DIFdelbegin \DIFdel{CopyInsertable }\DIFdelend \DIFaddbegin \tcode{CopyInsertable} \DIFaddend into \tcode{X}
   and \tcode{CopyAssignable}.\br
   post: \tcode{a == t}    &
   linear                  \\ \rowsep
@@ -737,7 +737,7 @@ The complexities of the expressions are sequence dependent.
 \tcode{X a(n, t)}   &
                 &
  \requires \tcode{T} shall be
- \tcode{CopyInsertable} into \tcode{X}.\br
+ \DIFdelbegin \DIFdel{CopyInsertable }\DIFdelend \DIFaddbegin \tcode{CopyInsertable} \DIFaddend into \tcode{X}.\br
  post: \tcode{distance(begin(), end()) == n}\br
  Constructs a sequence container with \tcode{n} copies of \tcode{t}  \\ \rowsep
 
@@ -761,7 +761,7 @@ The complexities of the expressions are sequence dependent.
 \tcode{a = il;}     &
   \tcode{X\&}               &
   \requires\ \tcode{T} is
-  \tcode{CopyInsertable} into \tcode{X}
+  \DIFdelbegin \DIFdel{CopyInsertable }\DIFdelend \DIFaddbegin \tcode{CopyInsertable} \DIFaddend into \tcode{X}
   and \tcode{CopyAssignable}.
   Assigns the range \range{il.begin()}{il.end()} into \tcode{a}. All existing
   elements of \tcode{a} are either assigned to or destroyed.\br
@@ -779,7 +779,7 @@ The complexities of the expressions are sequence dependent.
 \tcode{a.insert(p,t)}   &
  \tcode{iterator}       &
  \requires \tcode{T} shall be
- \tcode{CopyInsertable} into \tcode{X}. For \tcode{vector} and \tcode{deque},
+ \DIFdelbegin \DIFdel{CopyInsertable }\DIFdelend \DIFaddbegin \tcode{CopyInsertable} \DIFaddend into \tcode{X}. For \tcode{vector} and \tcode{deque},
  \tcode{T} shall also be \tcode{CopyAssignable}.\br
  \effects\ Inserts a copy of \tcode{t} before \tcode{p}. \\ \rowsep
 
@@ -793,7 +793,7 @@ The complexities of the expressions are sequence dependent.
 \tcode{a.insert(p,n,t)}     &
  \tcode{iterator}               &
  \requires \tcode{T} shall be
- \tcode{CopyInsertable} into \tcode{X}
+ \DIFdelbegin \DIFdel{CopyInsertable }\DIFdelend \DIFaddbegin \tcode{CopyInsertable} \DIFaddend into \tcode{X}
  and \tcode{CopyAssignable}.\br
  Inserts \tcode{n} copies of \tcode{t} before \tcode{p}. \\ \rowsep
 
@@ -847,7 +847,7 @@ The complexities of the expressions are sequence dependent.
 \tcode{a.assign(n,t)}   &
  \tcode{void}           &
  \requires \tcode{T} shall be
- \tcode{CopyInsertable} into \tcode{X}
+ \DIFdelbegin \DIFdel{CopyInsertable }\DIFdelend \DIFaddbegin \tcode{CopyInsertable} \DIFaddend into \tcode{X}
  and \tcode{CopyAssignable}.\br
  pre: \tcode{t} is not a reference into \tcode{a}.\br
  Replaces elements in \tcode{a} with \tcode{n} copies of \tcode{t}.   \\
@@ -1014,7 +1014,7 @@ time.
   \tcode{void}          &
   Prepends a copy of \tcode{t}.\br
   \requires\ \tcode{T} shall be
-  \tcode{CopyInsertable} into \tcode{X}.
+  \DIFdelbegin \DIFdel{CopyInsertable }\DIFdelend \DIFaddbegin \tcode{CopyInsertable} \DIFaddend into \tcode{X}.
     &
   \tcode{deque},
   \tcode{forward_list},
@@ -1036,7 +1036,7 @@ time.
   \tcode{void}          &
   Appends a copy of \tcode{t}.\br
   \requires\ \tcode{T} shall be
-  \tcode{CopyInsertable} into \tcode{X}.
+  \DIFdelbegin \DIFdel{CopyInsertable }\DIFdelend \DIFaddbegin \tcode{CopyInsertable} \DIFaddend into \tcode{X}.
     &
   \tcode{basic_string},
   \tcode{deque},
@@ -1296,8 +1296,10 @@ and \tcode{c} denotes a value of type \tcode{X::key_compare}.
 
 \tcode{a = il}     &
   \tcode{X\&}               &
-  \requires\ \tcode{value_type} is
-  \tcode{CopyInsertable} into \tcode{X}
+  \requires\ \DIFdelbegin %DIFDELCMD < \tcode{T} %%%
+\DIFdel{is
+  CopyInsertable }\DIFdelend \DIFaddbegin \tcode{value_type} \DIFadd{is
+  }\tcode{CopyInsertable} \DIFaddend into \tcode{X}
   and \tcode{CopyAssignable}.\br
   \effects Assigns the range \range{il.begin()}{il.end()} into \tcode{a}. All
   existing elements of \tcode{a} are either assigned to or destroyed. &
@@ -1317,8 +1319,10 @@ and \tcode{c} denotes a value of type \tcode{X::key_compare}.
 
 \tcode{a_uniq.} \tcode{emplace(args)} &
  \tcode{pair<iterator,} \tcode{bool>} &
-  \requires\ \tcode{value_type} shall be \tcode{EmplaceConstructible} into \tcode{X} from \tcode{args}.\br
-  \effects\ Inserts a \tcode{value_type} object \tcode{t} constructed with
+  \requires\ \DIFdelbegin %DIFDELCMD < \tcode{T} %%%
+\DIFdelend \DIFaddbegin \tcode{value_type} \DIFaddend shall be \tcode{EmplaceConstructible} into \tcode{X} from \tcode{args}.\br
+  \effects\ Inserts a \DIFdelbegin %DIFDELCMD < \tcode{T} %%%
+\DIFdelend \DIFaddbegin \tcode{value_type} \DIFaddend object \tcode{t} constructed with
   \tcode{std::forward<Args>(args)...} if and only if there is no
   element in the container with key equivalent to the key of \tcode{t}.
   The \tcode{bool} component of the returned
@@ -1329,8 +1333,10 @@ and \tcode{c} denotes a value of type \tcode{X::key_compare}.
 
 \tcode{a_eq.} \tcode{emplace(args)}  &
  \tcode{iterator}    &
- \requires\ \tcode{value_type} shall be \tcode{EmplaceConstructible} into \tcode{X} from \tcode{args}.\br
- \effects\ Inserts a \tcode{value_type} object \tcode{t} constructed with
+ \requires\ \DIFdelbegin %DIFDELCMD < \tcode{T} %%%
+\DIFdelend \DIFaddbegin \tcode{value_type} \DIFaddend shall be \tcode{EmplaceConstructible} into \tcode{X} from \tcode{args}.\br
+ \effects\ Inserts a \DIFdelbegin %DIFDELCMD < \tcode{T} %%%
+\DIFdelend \DIFaddbegin \tcode{value_type} \DIFaddend object \tcode{t} constructed with
  \tcode{std::forward<Args>(args)...} and returns the iterator pointing
  to the newly inserted element.
  If a range containing elements equivalent to \tcode{t} exists in \tcode{a_eq},
@@ -1349,9 +1355,12 @@ and \tcode{c} denotes a value of type \tcode{X::key_compare}.
 
 \tcode{a_uniq.} \tcode{insert(t)}      &
   \tcode{pair<iterator, bool>}   &
-  \requires\ If \tcode{t} is a non-const rvalue expression, \tcode{value_type} shall be
-  \tcode{MoveInsertable} into \tcode{X}; otherwise, \tcode{value_type} shall be
-  \tcode{CopyInsertable} into \tcode{X}.\br
+  \requires\ If \tcode{t} is a non-const rvalue expression, \DIFdelbegin %DIFDELCMD < \tcode{T} %%%
+\DIFdelend \DIFaddbegin \tcode{value_type} \DIFaddend shall be
+  \tcode{MoveInsertable} into \tcode{X}; otherwise, \DIFdelbegin %DIFDELCMD < \tcode{T} %%%
+\DIFdel{shall be
+  CopyInsertable }\DIFdelend \DIFaddbegin \tcode{value_type} \DIFadd{shall be
+  }\tcode{CopyInsertable} \DIFaddend into \tcode{X}.\br
   \effects\ Inserts \tcode{t} if and only if there is no element in the container
   with key equivalent to the key of \tcode{t}. The \tcode{bool} component of
   the returned pair is true if and only if the insertion
@@ -1362,9 +1371,12 @@ and \tcode{c} denotes a value of type \tcode{X::key_compare}.
 
 \tcode{a_eq.insert(t)}        &
   \tcode{iterator}               &
-  \requires\ If \tcode{t} is a non-const rvalue expression, \tcode{value_type} shall be
-  \tcode{MoveInsertable} into \tcode{X}; otherwise, \tcode{value_type} shall be
-  \tcode{CopyInsertable} into \tcode{X}.\br
+  \requires\ If \tcode{t} is a non-const rvalue expression, \DIFdelbegin %DIFDELCMD < \tcode{T} %%%
+\DIFdelend \DIFaddbegin \tcode{value_type} \DIFaddend shall be
+  \tcode{MoveInsertable} into \tcode{X}; otherwise, \DIFdelbegin %DIFDELCMD < \tcode{T} %%%
+\DIFdel{shall be
+  CopyInsertable }\DIFdelend \DIFaddbegin \tcode{value_type} \DIFadd{shall be
+  }\tcode{CopyInsertable} \DIFaddend into \tcode{X}.\br
   \effects\ Inserts \tcode{t} and returns the iterator pointing
   to the newly inserted element.
   If a range containing elements equivalent to
@@ -1375,9 +1387,12 @@ and \tcode{c} denotes a value of type \tcode{X::key_compare}.
 \tcode{a.insert(}\br
   \tcode{p, t)}                         &
   \tcode{iterator}               &
-  \requires\ If \tcode{t} is a non-const rvalue expression, \tcode{value_type} shall be
-  \tcode{MoveInsertable} into \tcode{X}; otherwise, \tcode{value_type} shall be
-  \tcode{CopyInsertable} into \tcode{X}.\br
+  \requires\ If \tcode{t} is a non-const rvalue expression, \DIFdelbegin %DIFDELCMD < \tcode{T} %%%
+\DIFdelend \DIFaddbegin \tcode{value_type} \DIFaddend shall be
+  \tcode{MoveInsertable} into \tcode{X}; otherwise, \DIFdelbegin %DIFDELCMD < \tcode{T} %%%
+\DIFdel{shall be
+  CopyInsertable }\DIFdelend \DIFaddbegin \tcode{value_type} \DIFadd{shall be
+  }\tcode{CopyInsertable} \DIFaddend into \tcode{X}.\br
   \effects\ Inserts \tcode{t} if and only if there is no element with key
   equivalent to the key of \tcode{t} in containers with unique keys;
   always inserts \tcode{t} in containers with equivalent keys. always
@@ -1390,7 +1405,8 @@ and \tcode{c} denotes a value of type \tcode{X::key_compare}.
 \tcode{a.insert(}\br
   \tcode{i, j)}          &
   \tcode{void}                   &
-  \requires\ \tcode{value_type} shall be \tcode{EmplaceConstructible} into \tcode{X} from \tcode{*i}.\br
+  \requires\ \DIFdelbegin %DIFDELCMD < \tcode{T} %%%
+\DIFdelend \DIFaddbegin \tcode{value_type} \DIFaddend shall be \tcode{EmplaceConstructible} into \tcode{X} from \tcode{*i}.\br
   pre: \tcode{i}, \tcode{j} are not iterators into \tcode{a}.
   inserts each element from the range \range{i}{j} if and only if there
   is no element with key equivalent to the key of that element in containers
@@ -1819,7 +1835,8 @@ from \tcode{[i, j)} into it.
 %
 \tcode{a = il}
 &   \tcode{X\&}
-&   \requires\ \tcode{value_type} is
+&   \requires\ \DIFdelbegin %DIFDELCMD < \tcode{T} %%%
+\DIFdelend \DIFaddbegin \tcode{value_type} \DIFaddend is
 CopyInsertable into \tcode{X}
 and \tcode{CopyAssignable}.\br
     \effects\ Assigns the range \range{il.begin()}{il.end()} into \tcode{a}. All
@@ -1846,8 +1863,10 @@ and \tcode{CopyAssignable}.\br
 
 \tcode{a_uniq.} \tcode{emplace(args)} &
   \tcode{pair<iterator,} \tcode{bool>} &
-  \requires\ \tcode{value_type} shall be \tcode{EmplaceConstructible} into \tcode{X} from \tcode{args}.\br
-  \effects\ Inserts a \tcode{value_type} object \tcode{t} constructed with
+  \requires\ \DIFdelbegin %DIFDELCMD < \tcode{T} %%%
+\DIFdelend \DIFaddbegin \tcode{value_type} \DIFaddend shall be \tcode{EmplaceConstructible} into \tcode{X} from \tcode{args}.\br
+  \effects\ Inserts a \DIFdelbegin %DIFDELCMD < \tcode{T} %%%
+\DIFdelend \DIFaddbegin \tcode{value_type} \DIFaddend object \tcode{t} constructed with
   \tcode{std::forward<Args>(args)...} if and only if there is no
   element in the container with key equivalent to the key of \tcode{t}.
   The \tcode{bool} component of the returned
@@ -1859,8 +1878,10 @@ and \tcode{CopyAssignable}.\br
 
 \tcode{a_eq.}\tcode{emplace(args)}  &
   \tcode{iterator}    &
-  \requires\ \tcode{value_type} shall be \tcode{EmplaceConstructible} into \tcode{X} from \tcode{args}.\br
-  \effects\ Inserts a \tcode{value_type} object \tcode{t} constructed with
+  \requires\ \DIFdelbegin %DIFDELCMD < \tcode{T} %%%
+\DIFdelend \DIFaddbegin \tcode{value_type} \DIFaddend shall be \tcode{EmplaceConstructible} into \tcode{X} from \tcode{args}.\br
+  \effects\ Inserts a \DIFdelbegin %DIFDELCMD < \tcode{T} %%%
+\DIFdelend \DIFaddbegin \tcode{value_type} \DIFaddend object \tcode{t} constructed with
   \tcode{std::forward<Args>(args)...} and returns the iterator pointing
   to the newly inserted element.    &
   Average case \bigoh{1}, worst case \bigoh{\tcode{a_eq.}\br\tcode{size()}}.
@@ -1868,7 +1889,8 @@ and \tcode{CopyAssignable}.\br
 
 \tcode{a.emplace_hint(p, args)}  &
   \tcode{iterator}    &
-  \requires\ \tcode{value_type} shall be \tcode{EmplaceConstructible} into \tcode{X} from \tcode{args}.\br
+  \requires\ \DIFdelbegin %DIFDELCMD < \tcode{T} %%%
+\DIFdelend \DIFaddbegin \tcode{value_type} \DIFaddend shall be \tcode{EmplaceConstructible} into \tcode{X} from \tcode{args}.\br
   \effects\ Equivalent to \tcode{a.emplace(} \tcode{std::forward<Args>(args)...)}.
   Return value is an iterator pointing to the element with the key equivalent
   to the newly inserted element. The \tcode{const_iterator} \tcode{p}
@@ -1879,9 +1901,12 @@ and \tcode{CopyAssignable}.\br
 
 \tcode{a_uniq.insert(t)}
 &   \tcode{pair<iterator, bool>}
-&   \requires\ If \tcode{t} is a non-const rvalue expression, \tcode{value_type} shall be
-    \tcode{MoveInsertable} into \tcode{X}; otherwise, \tcode{value_type} shall be
-    \tcode{CopyInsertable} into \tcode{X}.\br
+&   \requires\ If \tcode{t} is a non-const rvalue expression, \DIFdelbegin %DIFDELCMD < \tcode{T} %%%
+\DIFdelend \DIFaddbegin \tcode{value_type} \DIFaddend shall be
+    \tcode{MoveInsertable} into \tcode{X}; otherwise, \DIFdelbegin %DIFDELCMD < \tcode{T} %%%
+\DIFdel{shall be
+    CopyInsertable }\DIFdelend \DIFaddbegin \tcode{value_type} \DIFadd{shall be
+    }\tcode{CopyInsertable} \DIFaddend into \tcode{X}.\br
     \effects\ Inserts \tcode{t} if and only if there is no element in the container
     with key equivalent to the key of \tcode{t}.  The \tcode{bool}
     component of the returned pair indicates whether the insertion
@@ -1894,9 +1919,12 @@ and \tcode{CopyAssignable}.\br
 %
 \tcode{a_eq.insert(t)}
 &   \tcode{iterator}
-&   \requires\ If \tcode{t} is a non-const rvalue expression, \tcode{value_type} shall be
-    \tcode{MoveInsertable} into \tcode{X}; otherwise, \tcode{value_type} shall be
-    \tcode{CopyInsertable} into \tcode{X}.\br
+&   \requires\ If \tcode{t} is a non-const rvalue expression, \DIFdelbegin %DIFDELCMD < \tcode{T} %%%
+\DIFdelend \DIFaddbegin \tcode{value_type} \DIFaddend shall be
+    \tcode{MoveInsertable} into \tcode{X}; otherwise, \DIFdelbegin %DIFDELCMD < \tcode{T} %%%
+\DIFdel{shall be
+    CopyInsertable }\DIFdelend \DIFaddbegin \tcode{value_type} \DIFadd{shall be
+    }\tcode{CopyInsertable} \DIFaddend into \tcode{X}.\br
     \effects\ Inserts \tcode{t}, and returns an iterator pointing to the newly
     inserted element.
     \indextext{unordered associative containers!\idxcode{insert}}%
@@ -1906,9 +1934,12 @@ and \tcode{CopyAssignable}.\br
 %
 \tcode{a.insert(q, t)}
 &   \tcode{iterator}
-&   \requires\ If \tcode{t} is a non-const rvalue expression, \tcode{value_type} shall be
-    \tcode{MoveInsertable} into \tcode{X}; otherwise, \tcode{value_type} shall be
-    \tcode{CopyInsertable} into \tcode{X}.\br
+&   \requires\ If \tcode{t} is a non-const rvalue expression, \DIFdelbegin %DIFDELCMD < \tcode{T} %%%
+\DIFdelend \DIFaddbegin \tcode{value_type} \DIFaddend shall be
+    \tcode{MoveInsertable} into \tcode{X}; otherwise, \DIFdelbegin %DIFDELCMD < \tcode{T} %%%
+\DIFdel{shall be
+    CopyInsertable }\DIFdelend \DIFaddbegin \tcode{value_type} \DIFadd{shall be
+    }\tcode{CopyInsertable} \DIFaddend into \tcode{X}.\br
     \effects\ Equivalent to a.insert(t).  Return value is an iterator pointing
 to the element with the key equivalent to that of \tcode{t}.  The
 iterator \tcode{q} is a hint pointing to where the search should
@@ -1920,7 +1951,8 @@ start.  Implementations are permitted to ignore the hint.%
 %
 \tcode{a.insert(i, j)}
 &   \tcode{void}
-&   \requires\ \tcode{value_type} shall be \tcode{EmplaceConstructible} into \tcode{X} from \tcode{*i}.\br
+&   \requires\ \DIFdelbegin %DIFDELCMD < \tcode{T} %%%
+\DIFdelend \DIFaddbegin \tcode{value_type} \DIFaddend shall be \tcode{EmplaceConstructible} into \tcode{X} from \tcode{*i}.\br
     Pre: \tcode{i} and \tcode{j} are not iterators in \tcode{a}.
     Equivalent to \tcode{a.insert(t)} for each element in \tcode{[i,j)}.%
     \indextext{unordered associative containers!\idxcode{insert}}%
@@ -2224,7 +2256,10 @@ sequence containers.
 #include <initializer_list>
 
 namespace std {
-  template <class T, size_t N > struct array;
+  \DIFdelbegin %DIFDELCMD < 
+
+%DIFDELCMD <   %%%
+\DIFdelend template <class T, size_t N > struct array;
   template <class T, size_t N>
     bool operator==(const array<T,N>& x, const array<T,N>& y);
   template <class T, size_t N>
@@ -2259,10 +2294,12 @@ namespace std {
 \indexlibrary{\idxhdr{deque}}
 
 \begin{codeblock}
-#include <initializer_list>
+\DIFdelbegin \DIFdel{namespace std }%DIFDELCMD < {
+%DIFDELCMD <   %%%
+\DIFdelend #include <initializer_list>
 
-namespace std {
-  template <class T, class Allocator = allocator<T> > class deque;
+\DIFaddbegin \DIFadd{namespace std }{
+  \DIFaddend template <class T, class Allocator = allocator<T> > class deque;
   template <class T, class Allocator>
     bool operator==(const deque<T,Allocator>& x, const deque<T,Allocator>& y);
   template <class T, class Allocator>
@@ -2284,10 +2321,12 @@ namespace std {
 \indexlibrary{\idxhdr{forward_list}}
 
 \begin{codeblock}
-#include <initializer_list>
+\DIFdelbegin \DIFdel{namespace std }%DIFDELCMD < {
+%DIFDELCMD <   %%%
+\DIFdelend #include <initializer_list>
 
-namespace std {
-  template <class T, class Allocator = allocator<T> > class forward_list;
+\DIFaddbegin \DIFadd{namespace std }{
+  \DIFaddend template <class T, class Allocator = allocator<T> > class forward_list;
   template <class T, class Allocator>
     bool operator==(const forward_list<T,Allocator>& x, const forward_list<T,Allocator>& y);
   template <class T, class Allocator>
@@ -2309,10 +2348,12 @@ namespace std {
 \indexlibrary{\idxhdr{list}}
 
 \begin{codeblock}
-#include <initializer_list>
+\DIFdelbegin \DIFdel{namespace std }%DIFDELCMD < {
+%DIFDELCMD <   %%%
+\DIFdelend #include <initializer_list>
 
-namespace std {
-  template <class T, class Allocator = allocator<T> > class list;
+\DIFaddbegin \DIFadd{namespace std }{
+  \DIFaddend template <class T, class Allocator = allocator<T> > class list;
   template <class T, class Allocator>
     bool operator==(const list<T,Allocator>& x, const list<T,Allocator>& y);
   template <class T, class Allocator>
@@ -2337,7 +2378,10 @@ namespace std {
 #include <initializer_list>
 
 namespace std {
-  template <class T, class Allocator = allocator<T> > class vector;
+  \DIFdelbegin %DIFDELCMD < 
+
+%DIFDELCMD <   %%%
+\DIFdelend template <class T, class Allocator = allocator<T> > class vector;
   template <class T, class Allocator>
     bool operator==(const vector<T,Allocator>& x,const vector<T,Allocator>& y);
   template <class T, class Allocator>
@@ -2429,7 +2473,7 @@ namespace std {
     // no explicit construct/copy/destroy for aggregate type
 
     void fill(const T& u);
-    void swap(array&) noexcept(noexcept(swap(declval<T&>(), declval<T&>())));
+    void swap(array\DIFdelbegin \DIFdel{<T, N>}\DIFdelend &) noexcept(noexcept(swap(declval<T&>(), declval<T&>())));
 
     // iterators:
     iterator               begin() noexcept;
@@ -2701,15 +2745,15 @@ namespace std {
     deque(size_type n, const T& value,const Allocator& = Allocator());
     template <class InputIterator>
       deque(InputIterator first, InputIterator last,const Allocator& = Allocator());
-    deque(const deque& x);
+    deque(const deque\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend & x);
     deque(deque&&);
     deque(const deque&, const Allocator&);
     deque(deque&&, const Allocator&);
     deque(initializer_list<T>, const Allocator& = Allocator());
 
     ~deque();
-    deque& operator=(const deque& x);
-    deque& operator=(deque&& x);
+    deque\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend & operator=(const deque\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend & x);
+    deque\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend & operator=(deque\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend && x);
     deque& operator=(initializer_list<T>);
     template <class InputIterator>
       void assign(InputIterator first, InputIterator last);
@@ -2772,7 +2816,7 @@ namespace std {
 
     iterator erase(const_iterator position);
     iterator erase(const_iterator first, const_iterator last);
-    void     swap(deque&);
+    void     swap(deque\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend &);
     void     clear() noexcept;
   };
 
@@ -3119,8 +3163,8 @@ namespace std {
     forward_list(forward_list&& x, const Allocator&);
     forward_list(initializer_list<T>, const Allocator& = Allocator());
     ~forward_list();
-    forward_list& operator=(const forward_list& x);
-    forward_list& operator=(forward_list&& x);
+    forward_list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend & operator=(const forward_list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend & x);
+    forward_list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend & operator=(forward_list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend && x);
     forward_list& operator=(initializer_list<T>);
     template <class InputIterator>
       void assign(InputIterator first, InputIterator last);
@@ -3164,23 +3208,23 @@ namespace std {
     iterator insert_after(const_iterator position, initializer_list<T> il);
 
     iterator erase_after(const_iterator position);
-    iterator erase_after(const_iterator position, const_iterator last);
-    void swap(forward_list&);
+    iterator erase_after(const_iterator position, \DIFdelbegin \DIFdel{iterator }\DIFdelend \DIFaddbegin \DIFadd{const_iterator }\DIFaddend last);
+    void swap(forward_list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend &);
 
     void resize(size_type sz);
     void resize(size_type sz, const value_type& c);
     void clear() noexcept;
 
     // \ref{forwardlist.ops}, forward_list operations:
-    void splice_after(const_iterator position, forward_list& x);
-    void splice_after(const_iterator position, forward_list&& x);
-    void splice_after(const_iterator position, forward_list& x,
+    void splice_after(const_iterator position, forward_list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend & x);
+    void splice_after(const_iterator position, forward_list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend && x);
+    void splice_after(const_iterator position, forward_list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend & x,
                       const_iterator i);
-    void splice_after(const_iterator position, forward_list&& x,
+    void splice_after(const_iterator position, forward_list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend && x,
                       const_iterator i);
-    void splice_after(const_iterator position, forward_list& x,
+    void splice_after(const_iterator position, forward_list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend & x,
                       const_iterator first, const_iterator last);
-    void splice_after(const_iterator position, forward_list&& x,
+    void splice_after(const_iterator position, forward_list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend && x,
                       const_iterator first, const_iterator last);
 
     void remove(const T& value);
@@ -3189,10 +3233,10 @@ namespace std {
     void unique();
     template <class BinaryPredicate> void unique(BinaryPredicate binary_pred);
 
-    void merge(forward_list& x);
-    void merge(forward_list&& x);
-    template <class Compare> void merge(forward_list& x, Compare comp);
-    template <class Compare> void merge(forward_list&& x, Compare comp);
+    void merge(forward_list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend & x);
+    void merge(forward_list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend && x);
+    template <class Compare> void merge(forward_list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend & x, Compare comp);
+    template <class Compare> void merge(forward_list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend && x, Compare comp);
 
     void sort();
     template <class Compare> void sort(Compare comp);
@@ -3514,7 +3558,7 @@ erased, or \tcode{end()} if no such element exists.
 \indexlibrary{\idxcode{erased}!\idxcode{forward_list}}%
 \indexlibrary{\idxcode{forward_list}!\idxcode{erased}}%
 \begin{itemdecl}
-iterator erase_after(const_iterator position, const_iterator last);
+iterator erase_after(const_iterator position, \DIFdelbegin \DIFdel{iterator }\DIFdelend \DIFaddbegin \DIFadd{const_iterator }\DIFaddend last);
 \end{itemdecl}
 
 \begin{itemdescr}
@@ -3570,8 +3614,8 @@ void clear() noexcept;
 \indexlibrary{\idxcode{splice_after}!\idxcode{forward_list}}%
 \indexlibrary{\idxcode{forward_list}!\idxcode{splice_after}}%
 \begin{itemdecl}
-void splice_after(const_iterator position, forward_list& x);
-void splice_after(const_iterator position, forward_list&& x);
+void splice_after(const_iterator position, forward_list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend & x);
+void splice_after(const_iterator position, forward_list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend && x);
 \end{itemdecl}
 
 \begin{itemdescr}
@@ -3597,8 +3641,8 @@ they now behave as iterators into \tcode{*this}, not into \tcode{x}.
 \indexlibrary{\idxcode{splice_after}!\idxcode{forward_list}}%
 \indexlibrary{\idxcode{forward_list}!\idxcode{splice_after}}%
 \begin{itemdecl}
-void splice_after(const_iterator position, forward_list& x, const_iterator i);
-void splice_after(const_iterator position, forward_list&& x, const_iterator i);
+void splice_after(const_iterator position, forward_list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend & x, const_iterator i);
+void splice_after(const_iterator position, forward_list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend && x, const_iterator i);
 \end{itemdecl}
 
 \begin{itemdescr}
@@ -3625,9 +3669,9 @@ the same element, but now behave as iterators into \tcode{*this}, not into \tcod
 \indexlibrary{\idxcode{splice_after}!\idxcode{forward_list}}%
 \indexlibrary{\idxcode{forward_list}!\idxcode{splice_after}}%
 \begin{itemdecl}
-void splice_after(const_iterator position, forward_list& x,
+void splice_after(const_iterator position, forward_list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend & x,
                   const_iterator first, const_iterator last);
-void splice_after(const_iterator position, forward_list&& x,
+void splice_after(const_iterator position, forward_list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend && x,
                   const_iterator first, const_iterator last);
 \end{itemdecl}
 
@@ -3701,10 +3745,10 @@ Invalidates only the iterators and references to the erased elements.
 \indexlibrary{\idxcode{merge}!\idxcode{forward_list}}%
 \indexlibrary{\idxcode{forward_list}!\idxcode{merge}}%
 \begin{itemdecl}
-void merge(forward_list& x);
-void merge(forward_list&& x);
-template <class Compare> void merge(forward_list& x, Compare comp)
-template <class Compare> void merge(forward_list&& x, Compare comp)
+void merge(forward_list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend & x);
+void merge(forward_list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend && x);
+template <class Compare> void merge(forward_list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend & x, Compare comp)
+template <class Compare> void merge(forward_list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend && x, Compare comp)
 \end{itemdecl}
 
 \begin{itemdescr}
@@ -3838,14 +3882,14 @@ namespace std {
     list(size_type n, const T& value, const Allocator& = Allocator());
     template <class InputIterator>
       list(InputIterator first, InputIterator last, const Allocator& = Allocator());
-    list(const list& x);
+    list(const list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend & x);
     list(list&& x);
     list(const list&, const Allocator&);
     list(list&&, const Allocator&);
     list(initializer_list<T>, const Allocator& = Allocator());
    ~list();
-    list& operator=(const list& x);
-    list& operator=(list&& x);
+    list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend & operator=(const list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend & x);
+    list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend & operator=(list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend && x);
     list& operator=(initializer_list<T>);
     template <class InputIterator>
       void assign(InputIterator first, InputIterator last);
@@ -3902,17 +3946,17 @@ namespace std {
 
     iterator erase(const_iterator position);
     iterator erase(const_iterator position, const_iterator last);
-    void     swap(list&);
+    void     swap(list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend &);
     void     clear() noexcept;
 
     // \ref{list.ops}, list operations:
-    void splice(const_iterator position, list& x);
-    void splice(const_iterator position, list&& x);
-    void splice(const_iterator position, list& x, const_iterator i);
-    void splice(const_iterator position, list&& x, const_iterator i);
-    void splice(const_iterator position, list& x,
+    void splice(const_iterator position, list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend & x);
+    void splice(const_iterator position, list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend && x);
+    void splice(const_iterator position, list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend & x, const_iterator i);
+    void splice(const_iterator position, list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend && x, const_iterator i);
+    void splice(const_iterator position, list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend & x,
                 const_iterator first, const_iterator last);
-    void splice(const_iterator position, list&& x,
+    void splice(const_iterator position, list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend && x,
                 const_iterator first, const_iterator last);
 
     void remove(const T& value);
@@ -3922,10 +3966,10 @@ namespace std {
     template <class BinaryPredicate>
       void unique(BinaryPredicate binary_pred);
 
-    void merge(list& x);
-    void merge(list&& x);
-    template <class Compare> void merge(list& x, Compare comp);
-    template <class Compare> void merge(list&& x, Compare comp);
+    void merge(list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend & x);
+    void merge(list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend && x);
+    template <class Compare> void merge(list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend & x, Compare comp);
+    template <class Compare> void merge(list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend && x, Compare comp);
 
     void sort();
     template <class Compare> void sort(Compare comp);
@@ -4196,8 +4240,8 @@ x.get_allocator()}.
 
 \indexlibrary{\idxcode{splice}!\tcode{list}}%
 \begin{itemdecl}
-void splice(const_iterator position, list& x);
-void splice(const_iterator position, list&& x);
+void splice(const_iterator position, list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend & x);
+void splice(const_iterator position, list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend && x);
 \end{itemdecl}
 
 \begin{itemdescr}
@@ -4235,8 +4279,8 @@ Constant time.
 \indexlibrary{\idxcode{splice}!\idxcode{list}}%
 \indexlibrary{\idxcode{list}!\idxcode{splice}}%
 \begin{itemdecl}
-void splice(const_iterator position, list& x, const_iterator i);
-void splice(const_iterator position, list&& x, const_iterator i);
+void splice(const_iterator position, list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend & x, const_iterator i);
+void splice(const_iterator position, list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend && x, const_iterator i);
 \end{itemdecl}
 
 \begin{itemdescr}
@@ -4283,9 +4327,9 @@ Constant time.
 \indexlibrary{\idxcode{splice}!\idxcode{list}}%
 \indexlibrary{\idxcode{list}!\idxcode{splice}}%
 \begin{itemdecl}
-void splice(const_iterator position, list& x, const_iterator first,
+void splice(const_iterator position, list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend & x, const_iterator first,
             const_iterator last);
-void splice(const_iterator position, list&& x, const_iterator first,
+void splice(const_iterator position, list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend && x, const_iterator first,
             const_iterator last);
 \end{itemdecl}
 
@@ -4394,10 +4438,10 @@ otherwise no applications of the predicate.
 
 \indexlibrary{\idxcode{merge}!\tcode{list}}%
 \begin{itemdecl}
-void                          merge(list& x);
-void                          merge(list&& x);
-template <class Compare> void merge(list& x, Compare comp);
-template <class Compare> void merge(list&& x, Compare comp);
+void                          merge(list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend & x);
+void                          merge(list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend && x);
+template <class Compare> void merge(list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend & x, Compare comp);
+template <class Compare> void merge(list\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend && x, Compare comp);
 \end{itemdecl}
 
 \begin{itemdescr}
@@ -4565,14 +4609,14 @@ namespace std {
     template <class InputIterator>
       vector(InputIterator first, InputIterator last,
              const Allocator& = Allocator());
-    vector(const vector& x);
+    vector(const vector\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend & x);
     vector(vector&&);
     vector(const vector&, const Allocator&);
     vector(vector&&, const Allocator&);
     vector(initializer_list<T>, const Allocator& = Allocator());
    ~vector();
-    vector& operator=(const vector& x);
-    vector& operator=(vector&& x);
+    vector\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend & operator=(const vector\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend & x);
+    vector\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend & operator=(vector\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend && x);
     vector& operator=(initializer_list<T>);
     template <class InputIterator>
       void assign(InputIterator first, InputIterator last);
@@ -4635,7 +4679,7 @@ namespace std {
     iterator     insert(const_iterator position, initializer_list<T> il);
     iterator erase(const_iterator position);
     iterator erase(const_iterator first, const_iterator last);
-    void     swap(vector&);
+    void     swap(vector\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend &);
     void     clear() noexcept;
   };
 
@@ -4849,7 +4893,7 @@ void shrink_to_fit();
 
 \indexlibrary{\idxcode{swap}!\idxcode{vector}}%
 \begin{itemdecl}
-void swap(vector& x);
+void swap(vector\DIFdelbegin \DIFdel{<T,Allocator>}\DIFdelend & x);
 \end{itemdecl}
 
 \begin{itemdescr}
@@ -6906,7 +6950,10 @@ const mapped_type& at(const key_type& k) const;
 \throws An exception object of type \tcode{out_of_range} if no such element is present.
 \end{itemdescr}
 
-\rSec3[unord.map.modifiers]{\tcode{unordered_map} modifiers}
+\DIFdelbegin %DIFDELCMD < \rSec3[unord.map.modifers]{\tcode{unordered_map} modifiers}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \rSec3[unord.map.modifiers]{\tcode{unordered_map} modifiers}
+\DIFaddend 
 
 \indexlibrary{\idxcode{unordered_map}!\idxcode{operator[]}}%
 \indexlibrary{\idxcode{operator[]}!\idxcode{unordered_map}}%
@@ -7185,7 +7232,10 @@ inserts elements from the range \tcode{[\textit{f}, \textit{l})}.
 \complexity Average case linear, worst case quadratic.
 \end{itemdescr}
 
-\rSec3[unord.multimap.modifiers]{\tcode{unordered_multimap} modifiers}
+\DIFdelbegin %DIFDELCMD < \rSec3[unord.multimap.modifers]{\tcode{unordered_multimap} modifiers}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \rSec3[unord.multimap.modifiers]{\tcode{unordered_multimap} modifiers}
+\DIFaddend 
 
 \indexlibrary{\idxcode{unordered_multimap}!\idxcode{operator[]}}%
 \indexlibrary{\idxcode{operator[]}!\idxcode{unordered_multimap}}%

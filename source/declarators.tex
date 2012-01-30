@@ -1361,7 +1361,7 @@ optional \grammarterm{attribute-specifier-seq} appertains to the function type.
 
 \pnum
 \indextext{type!function}%
-A type of either form is a \term{function type}.\footnote{As indicated by syntax, cv-qualifiers are a significant component in function return types.}
+A type of either form is a \term{function type}.\footnote{As indicated by syntax, cv-qualifiers are a \DIFdelbegin \DIFdel{signficant }\DIFdelend \DIFaddbegin \DIFadd{significant }\DIFaddend component in function return types.}
 
 \indextext{declaration!function}%
 \begin{bnf}
@@ -2322,10 +2322,10 @@ function is selected by overload resolution. \exitnote
 initialization with
 
 \begin{codeblock}
-struct onlydouble {
-  onlydouble() = delete;              // OK, but redundant
-  onlydouble(std::intmax_t) = delete;
-  onlydouble(double);
+struct \DIFdelbegin \DIFdel{sometype }\DIFdelend \DIFaddbegin \DIFadd{onlydouble }\DIFaddend {
+  \DIFdelbegin \DIFdel{sometype}\DIFdelend \DIFaddbegin \DIFadd{onlydouble}\DIFaddend () = delete;              // OK, but redundant
+  \DIFdelbegin \DIFdel{some_type}\DIFdelend \DIFaddbegin \DIFadd{onlydouble}\DIFaddend (std::intmax_t) = delete;
+  \DIFdelbegin \DIFdel{some_type}\DIFdelend \DIFaddbegin \DIFadd{onlydouble}\DIFaddend (double);
 };
 \end{codeblock}
 

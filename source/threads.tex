@@ -72,7 +72,7 @@ detection. Actual use of these members is inherently non-portable. \exitnote
 \pnum
 Several functions described in this Clause take an argument to specify a timeout. These
 timeouts are specified as either a \tcode{duration} or a \tcode{time_point} type as
-specified in~\ref{time}.
+specified in~\DIFdelbegin \DIFdel{(\ref{time})}\DIFdelend \DIFaddbegin \DIFadd{\ref{time}}\DIFaddend .
 
 \pnum
 Implementations necessarily have some delay in returning from a timeout. Any overhead in
@@ -115,7 +115,7 @@ result in the total duration of the wait decreasing when measured against a stea
 An implementation shall return from such a timeout at any point from the time specified above to
 the time it would return from a steady-clock relative timeout on the difference between $C_t$
 and the time point of the call to the \tcode{_until} function. \enternote Implementations
-should decrease the duration of the wait when the clock is adjusted forwards.
+should \DIFdelbegin \DIFdel{, but might not, }\DIFdelend decrease the duration of the wait when the clock is adjusted forwards.
 \exitnote
 
 \pnum
@@ -566,8 +566,8 @@ value of \tcode{x.get_id()} prior to the start of construction.
 \end{itemdecl}
 
 \begin{itemdescr}
-\pnum
-If \tcode{joinable()}, calls \tcode{std::terminate()}. Otherwise, has no effects.
+\DIFaddbegin \pnum
+\DIFaddend If \tcode{joinable()}, calls \tcode{std::terminate()}. Otherwise, has no effects.
 \enternote Either implicitly detaching or joining a \tcode{joinable()} thread in its
 destructor could result in difficult to debug correctness (for detach) or performance
 (for join) bugs encountered only when an exception is raised. Thus the programmer must
@@ -591,10 +591,11 @@ state of \tcode{x} to \tcode{*this} and sets \tcode{x} to a default constructed 
 \pnum
 \postconditions \tcode{x.get_id() == id()} and \tcode{get_id()} returns the value of
 \tcode{x.get_id()} prior to the assignment.
+\DIFaddbegin 
 
 \pnum
 \returns \tcode{*this}
-\end{itemdescr}
+\DIFaddend \end{itemdescr}
 
 \rSec3[thread.thread.member]{\tcode{thread} members}
 
@@ -737,7 +738,8 @@ namespace std {
       void sleep_until(const chrono::time_point<Clock, Duration>& abs_time);
     template <class Rep, class Period>
       void sleep_for(const chrono::duration<Rep, Period>& rel_time);
-  }
+  \DIFdelbegin \DIFdel{;
+  }\DIFdelend }
 }
 \end{codeblock}
 
@@ -774,7 +776,8 @@ void this_thread::yield() noexcept;
 \begin{itemdecl}
 template <class Clock, class Duration>
   void sleep_until(const chrono::time_point<Clock, Duration>& abs_time);
-\end{itemdecl}
+\DIFdelbegin \DIFdel{;
+}\DIFdelend \end{itemdecl}
 
 \begin{itemdescr}
 \pnum
@@ -797,7 +800,8 @@ not throw exceptions. \exitnote
 \begin{itemdecl}
 template <class Rep, class Period>
   void sleep_for(const chrono::duration<Rep, Period>& rel_time);
-\end{itemdecl}
+\DIFdelbegin \DIFdel{;
+}\DIFdelend \end{itemdecl}
 
 \begin{itemdescr}
 \pnum
@@ -1212,9 +1216,11 @@ namespace std {
     bool try_lock();
     template <class Rep, class Period>
       bool try_lock_for(const chrono::duration<Rep, Period>& rel_time);
-    template <class Clock, class Duration>
+    \DIFdelbegin \DIFdel{;
+    }\DIFdelend template <class Clock, class Duration>
       bool try_lock_until(const chrono::time_point<Clock, Duration>& abs_time);
-    void unlock();
+    \DIFdelbegin \DIFdel{;
+    }\DIFdelend void unlock();
 
     typedef @\impdef@ native_handle_type; // See~\ref{thread.req.native}
     native_handle_type native_handle();                // See~\ref{thread.req.native}
@@ -1262,9 +1268,11 @@ namespace std {
     bool try_lock() noexcept;
     template <class Rep, class Period>
       bool try_lock_for(const chrono::duration<Rep, Period>& rel_time);
-    template <class Clock, class Duration>
+    \DIFdelbegin \DIFdel{;
+    }\DIFdelend template <class Clock, class Duration>
       bool try_lock_until(const chrono::time_point<Clock, Duration>& abs_time);
-    void unlock();
+    \DIFdelbegin \DIFdel{;
+    }\DIFdelend void unlock();
 
     typedef @\impdef@ native_handle_type; // See~\ref{thread.req.native}
     native_handle_type native_handle();                // See~\ref{thread.req.native}
@@ -1427,9 +1435,11 @@ namespace std {
     unique_lock(mutex_type& m, adopt_lock_t);
     template <class Clock, class Duration>
       unique_lock(mutex_type& m, const chrono::time_point<Clock, Duration>& abs_time);
-    template <class Rep, class Period>
+    \DIFdelbegin \DIFdel{;
+    }\DIFdelend template <class Rep, class Period>
       unique_lock(mutex_type& m, const chrono::duration<Rep, Period>& rel_time);
-    ~unique_lock();
+    \DIFdelbegin \DIFdel{;
+    }\DIFdelend ~unique_lock();
 
     unique_lock(unique_lock const&) = delete;
     unique_lock& operator=(unique_lock const&) = delete;
@@ -1574,7 +1584,8 @@ unique_lock(mutex_type& m, adopt_lock_t);
 \begin{itemdecl}
 template <class Clock, class Duration>
   unique_lock(mutex_type& m, const chrono::time_point<Clock, Duration>& abs_time);
-\end{itemdecl}
+\DIFdelbegin \DIFdel{;
+}\DIFdelend \end{itemdecl}
 
 \begin{itemdescr}
 \pnum
@@ -1594,7 +1605,8 @@ the value returned by the call to \tcode{m.try_lock_until(abs_time)}.
 \begin{itemdecl}
 template <class Rep, class Period>
   unique_lock(mutex_type& m, const chrono::duration<Rep, Period>& rel_time);
-\end{itemdecl}
+\DIFdelbegin \DIFdel{;
+}\DIFdelend \end{itemdecl}
 
 \begin{itemdescr}
 \pnum
@@ -1957,8 +1969,8 @@ an exception is required~(\ref{thread.req.exception}), or any exception thrown b
 \item \tcode{invalid_argument} --- if the \tcode{once_flag} object is no longer valid.
 \end{itemize}
 
-\pnum
-\enterexample
+\DIFaddbegin \pnum
+\DIFaddend \enterexample
 \begin{codeblock}
 // global flag, regular function
 void init();
@@ -1975,7 +1987,7 @@ struct initializer {
 
 void g() {
   static std::once_flag flag2;
-  std::call_once(flag2, initializer());
+  std::call_once(flag2, initializer\DIFaddbegin \DIFadd{()}\DIFaddend );
 }
 
 // object flag, member function
@@ -1983,7 +1995,7 @@ class information {
   std::once_flag verified;
   void verifier();
 public:
-  void verify() { std::call_once(verified, &information::verifier, *this); }
+  void verify() { std::call_once(verified, \DIFdelbegin \DIFdel{verifier}\DIFdelend \DIFaddbegin &\DIFadd{information::verifier, *this}\DIFaddend ); }
 };
 \end{codeblock}
 \exitexample
@@ -2010,7 +2022,7 @@ execution of \tcode{wait}, \tcode{wait_for}, and \tcode{wait_until} shall be per
 in three atomic parts:
 
 \begin{enumerate}
-\item the release of the mutex and entry into the waiting state;
+\item the release of the mutex \DIFdelbegin \DIFdel{, }\DIFdelend and entry into the waiting state;
 \item the unblocking of the wait; and
 \item the reacquisition of the lock.
 \end{enumerate}
@@ -2174,7 +2186,7 @@ void notify_one() noexcept;
 \end{itemdecl}
 
 \begin{itemdescr}
-\pnum\effects If any threads are blocked waiting for \tcode{*this}, unblocks one of those threads.
+\pnum\effects If any threads are blocked waiting for \tcode{*this}, unblocks one of those \DIFdelbegin \DIFdel{theads}\DIFdelend \DIFaddbegin \DIFadd{threads}\DIFaddend .
 \end{itemdescr}
 
 \indexlibrary{\idxcode{condition_variable}!\idxcode{notify_all}}%
@@ -2227,8 +2239,10 @@ an exception is required~(\ref{thread.req.exception}).
 \end{itemize}
 \end{itemdescr}
 
-\indexlibrary{\idxcode{condition_variable}!\idxcode{wait}}%
-\indexlibrary{\idxcode{wait}!\idxcode{condition_variable}}%
+\DIFdelbegin %DIFDELCMD < \indexlibrary{\idxcode{condition}!\idxcode{wait}}%%%
+\DIFdelend \DIFaddbegin \indexlibrary{\idxcode{condition_variable}!\idxcode{wait}}\DIFaddend %
+\DIFdelbegin %DIFDELCMD < \indexlibrary{\idxcode{wait}!\idxcode{condition}}%%%
+\DIFdelend \DIFaddbegin \indexlibrary{\idxcode{wait}!\idxcode{condition_variable}}\DIFaddend %
 \begin{itemdecl}
 template <class Predicate>
   void wait(unique_lock<mutex>& lock, Predicate pred);
@@ -2323,8 +2337,10 @@ an exception is required~(\ref{thread.req.exception}).
 \end{itemize}
 \end{itemdescr}
 
-\indexlibrary{\idxcode{condition_variable}!\idxcode{wait_for}}%
-\indexlibrary{\idxcode{wait_for}!\idxcode{condition_variable}}%
+\DIFdelbegin %DIFDELCMD < \indexlibrary{\idxcode{condition}!\idxcode{wait_for}}%%%
+\DIFdelend \DIFaddbegin \indexlibrary{\idxcode{condition_variable}!\idxcode{wait_for}}\DIFaddend %
+\DIFdelbegin %DIFDELCMD < \indexlibrary{\idxcode{wait_for}!\idxcode{condition}}%%%
+\DIFdelend \DIFaddbegin \indexlibrary{\idxcode{wait_for}!\idxcode{condition_variable}}\DIFaddend %
 \begin{itemdecl}
 template <class Rep, class Period>
   cv_status wait_for(unique_lock<mutex>& lock,
@@ -2369,8 +2385,10 @@ an exception is required~(\ref{thread.req.exception}).
 \end{itemize}
 \end{itemdescr}
 
-\indexlibrary{\idxcode{condition_variable}!\idxcode{wait_until}}%
-\indexlibrary{\idxcode{wait_until}!\idxcode{condition_variable}}%
+\DIFdelbegin %DIFDELCMD < \indexlibrary{\idxcode{condition}!\idxcode{wait_until}}%%%
+\DIFdelend \DIFaddbegin \indexlibrary{\idxcode{condition_variable}!\idxcode{wait_until}}\DIFaddend %
+\DIFdelbegin %DIFDELCMD < \indexlibrary{\idxcode{wait_until}!\idxcode{condition}}%%%
+\DIFdelend \DIFaddbegin \indexlibrary{\idxcode{wait_until}!\idxcode{condition_variable}}\DIFaddend %
 \begin{itemdecl}
 template <class Clock, class Duration, class Predicate>
   bool wait_until(unique_lock<mutex>& lock,
@@ -2406,7 +2424,7 @@ return true;
 is locked by the calling thread.
 
 \pnum
-\enternote The returned value indicates whether the predicate evaluated to
+\enternote The returned value indicates whether the predicate \DIFdelbegin \DIFdel{evaluates }\DIFdelend \DIFaddbegin \DIFadd{evaluated }\DIFaddend to
 \tcode{true} regardless of whether the timeout was triggered. \exitnote
 
 \pnum
@@ -2420,8 +2438,10 @@ is locked by the calling thread.
 \end{itemize}
 \end{itemdescr}
 
-\indexlibrary{\idxcode{condition_variable}!\idxcode{wait_for}}%
-\indexlibrary{\idxcode{wait_for}!\idxcode{condition_variable}}%
+\DIFdelbegin %DIFDELCMD < \indexlibrary{\idxcode{condition}!\idxcode{wait_for}}%%%
+\DIFdelend \DIFaddbegin \indexlibrary{\idxcode{condition_variable}!\idxcode{wait_for}}\DIFaddend %
+\DIFdelbegin %DIFDELCMD < \indexlibrary{\idxcode{wait_for}!\idxcode{condition}}%%%
+\DIFdelend \DIFaddbegin \indexlibrary{\idxcode{wait_for}!\idxcode{condition_variable}}\DIFaddend %
 \begin{itemdecl}
 template <class Rep, class Period, class Predicate>
   bool wait_for(unique_lock<mutex>& lock,
@@ -2568,7 +2588,7 @@ void notify_one() noexcept;
 \end{itemdecl}
 
 \begin{itemdescr}
-\pnum\effects If any threads are blocked waiting for \tcode{*this}, unblocks one of those threads.
+\pnum\effects If any threads are blocked waiting for \tcode{*this}, unblocks one of those \DIFdelbegin \DIFdel{theads}\DIFdelend \DIFaddbegin \DIFadd{threads}\DIFaddend .
 \end{itemdescr}
 
 \indexlibrary{\idxcode{condition_variable_any}!\idxcode{notify_all}}%
@@ -2616,8 +2636,10 @@ an exception is required~(\ref{thread.req.exception}).
 \end{itemize}
 \end{itemdescr}
 
-\indexlibrary{\idxcode{condition_variable_any}!\idxcode{wait}}%
-\indexlibrary{\idxcode{wait}!\idxcode{condition_variable_any}}%
+\DIFdelbegin %DIFDELCMD < \indexlibrary{\idxcode{condition}!\idxcode{wait}}%%%
+\DIFdelend \DIFaddbegin \indexlibrary{\idxcode{condition_variable_any}!\idxcode{wait}}\DIFaddend %
+\DIFdelbegin %DIFDELCMD < \indexlibrary{\idxcode{wait}!\idxcode{condition}}%%%
+\DIFdelend \DIFaddbegin \indexlibrary{\idxcode{wait}!\idxcode{condition_variable_any}}\DIFaddend %
 \begin{itemdecl}
 template <class Lock, class Predicate>
   void wait(Lock& lock, Predicate pred);
@@ -3458,9 +3480,11 @@ releases any shared state~(\ref{futures.state}).
 move assigns the contents of \tcode{rhs} to \tcode{*this}.
 \end{itemize}
 
-\pnum
+\DIFdelbegin %DIFDELCMD < \postcondition
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \pnum
 \postconditions
-\begin{itemize}
+\DIFaddend \begin{itemize}
 \item
 \tcode{valid()} returns the same value as \tcode{rhs.valid()} prior to the
 assignment.
@@ -3921,7 +3945,7 @@ specified by \tcode{abs_time} has expired.
 \rSec2[futures.async]{Function template \tcode{async}}
 
 \pnum
-The function template \tcode{async} provides a mechanism to launch a function potentially
+The \DIFdelbegin \DIFdel{template function }\DIFdelend \DIFaddbegin \DIFadd{function template }\DIFaddend \tcode{async} provides a mechanism to launch a function potentially
 in a new thread and provides the result of the function in a \tcode{future} object with which
 it shares a shared state.
 
@@ -4000,7 +4024,8 @@ exploited. \exitnote
 \end{itemize}
 
 \pnum
-\returns An object of type \tcode{future<typename result_of<F(Args...)>::type>} that refers
+\returns An object of type \DIFdelbegin %DIFDELCMD < \tcode{future<typename result_of<F(Args...)>:type>} %%%
+\DIFdelend \DIFaddbegin \tcode{future<typename result_of<F(Args...)>::type>} \DIFaddend that refers
 to the shared state created by this call to \tcode{async}.
 
 \pnum

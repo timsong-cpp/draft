@@ -4,7 +4,17 @@
 
 \thispagestyle{empty}
 \begingroup
-\def\hd{\begin{tabular}{ll}
+\def\DIFdelbegin %DIFDELCMD < \hd{\begin{tabular}{ll}
+%DIFDELCMD <           \textbf{Document Number:} & {\larger\docno}             \\
+%DIFDELCMD <           \textbf{Date:}            & \reldate                    \\
+%DIFDELCMD <           \textbf{Revises:}         & \prevdocno                  \\
+%DIFDELCMD <           \textbf{Reply to:}        & Stefanus Du Toit                 \\
+%DIFDELCMD <                                     & Intel Corporation \\
+%DIFDELCMD <                                     & stefanus.du.toit@intel.com
+%DIFDELCMD <           \end{tabular}
+%DIFDELCMD < }
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \hd{\begin{tabular}{ll}
           \textbf{Document Number:} & {\larger\docno}             \\
           \textbf{Date:}            & \reldate                    \\
           \textbf{Revises:}         & \prevdocno                  \\
@@ -13,7 +23,7 @@
                                     & cxxeditor@gmail.com
           \end{tabular}
 }
-\newlength{\hdwidth}
+\DIFaddend \newlength{\hdwidth}
 \settowidth{\hdwidth}{\hd}
 \hfill\begin{minipage}{\hdwidth}\hd\end{minipage}
 \endgroup

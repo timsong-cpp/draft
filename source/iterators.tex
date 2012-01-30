@@ -380,7 +380,7 @@ Algorithms on input iterators should never attempt to pass through the same iter
 They should be
 \term{single pass}
 algorithms.
-Value type T is not required to be a \tcode{CopyAssignable} type (Table~\ref{copyassignable}).
+Value type T is not required to be a \DIFdelbegin \DIFdel{CopyAssignable }\DIFdelend \DIFaddbegin \tcode{CopyAssignable} \DIFaddend type (Table~\ref{copyassignable}).
 These algorithms can be used with istreams as the source of the input data through the
 \tcode{istream_iterator}
 class template.
@@ -1292,7 +1292,8 @@ or the global operators
 \tcode{operator-}~(\ref{reverse.iter.opdiff})
 or
 \tcode{operator+}~(\ref{reverse.iter.opsum})
-are referenced in a way that requires instantiation~(\ref{temp.inst}).
+\DIFdelbegin \DIFdel{.
+is }\DIFdelend \DIFaddbegin \DIFadd{are }\DIFaddend referenced in a way that requires instantiation~(\ref{temp.inst}).
 
 \rSec3[reverse.iter.ops]{\tcode{reverse_iterator} operations}
 

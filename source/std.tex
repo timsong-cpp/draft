@@ -1,18 +1,44 @@
 %% main file for the C++ standard.
 %%
+%DIF 3-18d3
+%DIF < %% to regenerate figures from .dot files, run 'dot -o<pdfname> -Tpdf <dotfilename>
+%DIF < %%    for example: dot -ofigstreampos.pdf -Tpdf figstreampos.dot
+%DIF < %%
+%DIF < %% to regenerate the grammar appendix, run '../tools/makegram' from the
+%DIF < %% source directory
+%DIF < %%
+%DIF < %% to regenerate the cross-references appendix, run '../tools/makexref'
+%DIF < %% from the source directory
+%DIF < %%
+%DIF < %% To typeset the standard:
+%DIF < %%  run 'pdflatex std' until there are no more changed labels or changed tables
+%DIF < %%  run 'makeindex generalindex'
+%DIF < %%  run 'makeindex libraryindex'
+%DIF < %%  run 'makeindex grammarindex'
+%DIF < %%  run 'makeindex impldefindex'
+%DIF < %%  run 'pdflatex std' twice more.
+%DIF -------
 
 %%--------------------------------------------------
 %% basics
 % \documentclass[letterpaper,oneside,openany]{memoir}
-\documentclass[ebook,10pt,oneside,openany,final]{memoir}
+%DIF 23c7
+%DIF < \documentclass[ebook,10pt,oneside,openany,draft]{memoir}
+%DIF -------
+\documentclass[ebook,10pt,oneside,openany,final]{memoir} %DIF > 
+%DIF -------
 % \includeonly{declarations}
 
 \usepackage[american]
            {babel}        % needed for iso dates
 \usepackage[iso,american]
            {isodate}      % use iso format for dates
-\usepackage[final]
-           {listings}     % code listings
+%DIF 30c14-15
+%DIF < \usepackage{listings}     % code listings
+%DIF -------
+\usepackage[final] %DIF > 
+           {listings}     % code listings %DIF > 
+%DIF -------
 \usepackage{longtable}    % auto-breaking tables
 \usepackage{booktabs}     % fancy tables
 \usepackage{relsize}      % provide relative font size changes
@@ -44,7 +70,11 @@
             linkcolor=blue,
             plainpages=false
            ]{hyperref}
-\usepackage{memhfixc}     % fix interactions between hyperref and memoir
+%DIF 62c47
+%DIF < \usepackage{memhfixc}     % fix interactions betweeen hyperref and memoir
+%DIF -------
+\usepackage{memhfixc}     % fix interactions between hyperref and memoir %DIF > 
+%DIF -------
 
 \input{layout}
 \input{styles}
@@ -59,6 +89,25 @@
 %%--------------------------------------------------
 %% add special hyphenation rules
 \hyphenation{tem-plate ex-am-ple in-put-it-er-a-tor name-space name-spaces}
+%DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
+%DIF UNDERLINE PREAMBLE %DIF PREAMBLE
+\RequirePackage[normalem]{ulem} %DIF PREAMBLE
+\RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
+\providecommand{\DIFadd}[1]{{\protect\color{blue}\uwave{#1}}} %DIF PREAMBLE
+\providecommand{\DIFdel}[1]{{\protect\color{red}\sout{#1}}}                      %DIF PREAMBLE
+%DIF SAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddbegin}{} %DIF PREAMBLE
+\providecommand{\DIFaddend}{} %DIF PREAMBLE
+\providecommand{\DIFdelbegin}{} %DIF PREAMBLE
+\providecommand{\DIFdelend}{} %DIF PREAMBLE
+%DIF FLOATSAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddFL}[1]{\DIFadd{#1}} %DIF PREAMBLE
+\providecommand{\DIFdelFL}[1]{\DIFdel{#1}} %DIF PREAMBLE
+\providecommand{\DIFaddbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFaddendFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelendFL}{} %DIF PREAMBLE
+%DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
 
 \begin{document}
 \chapterstyle{cppstd}

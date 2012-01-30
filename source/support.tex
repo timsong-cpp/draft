@@ -2941,9 +2941,12 @@ nested_exception() noexcept;
 \effects The constructor calls \tcode{current_exception()} and stores the returned value.
 \end{itemdescr}
 
-\indexlibrary{\idxcode{rethrow_nested}!\idxcode{nested_exception}}
+\DIFdelbegin %DIFDELCMD < \indexlibrary{\idxcode{returned}!\idxcode{nested_exception}}
+%DIFDELCMD < \indexlibrary{\idxcode{nested_exception}!\idxcode{returned}}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \indexlibrary{\idxcode{rethrow_nested}!\idxcode{nested_exception}}
 \indexlibrary{\idxcode{nested_exception}!\idxcode{rethrow_nested}}
-\begin{itemdecl}
+\DIFaddend \begin{itemdecl}
 [[noreturn]] void rethrow_nested() const;
 \end{itemdecl}
 

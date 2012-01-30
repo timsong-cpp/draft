@@ -63,7 +63,7 @@ namespace std {
 
   // \ref{category.numeric}, numeric:
   template <class charT, class InputIterator = istreambuf_iterator<charT> >  class num_get;
-  template <class charT, class OutputIterator = ostreambuf_iterator<charT> > class num_put;
+  template <class charT, class OutputIterator = \DIFdelbegin \DIFdel{osterambuf}\DIFdelend \DIFaddbegin \DIFadd{ostreambuf}\DIFaddend _iterator<charT> > class num_put;
   template <class charT> class numpunct;
   template <class charT> class numpunct_byname;
 
@@ -1165,8 +1165,9 @@ wide_string from_bytes(const char *first, const char *last);
 \pnum
 \effects
 The first member function shall convert the single-element sequence \tcode{byte} to a
-wide string. The second member function shall convert the null-terminated
-sequence beginning at \tcode{ptr} to a wide string. The third member function
+wide string. The second member function shall convert the \DIFdelbegin \DIFdel{nul-terminated
+}\DIFdelend \DIFaddbegin \DIFadd{null-terminated
+}\DIFaddend sequence beginning at \tcode{ptr} to a wide string. The third member function
 shall convert the sequence stored in \tcode{str} to a wide string. The fourth member
 function shall convert the sequence defined by the range \range{first}{last} to a
 wide string.
@@ -1235,7 +1236,7 @@ byte_string to_bytes(const Elem *first, const Elem *last);
 \pnum
 \effects
 The first member function shall convert the single-element sequence \tcode{wchar} to a byte string.
-The second member function shall convert the null-terminated sequence beginning at \tcode{wptr} to
+The second member function shall convert the \DIFdelbegin \DIFdel{nul-terminated }\DIFdelend \DIFaddbegin \DIFadd{null-terminated }\DIFaddend sequence beginning at \tcode{wptr} to
 a byte string. The third member function shall convert the sequence stored in \tcode{wstr} to a
 byte string. The fourth member function shall convert the sequence defined by the
 range \range{first}{last} to a byte string.
@@ -2829,7 +2830,9 @@ namespace std {
                   ios_base::iostate& err, long& v) const;
     iter_type get(iter_type in, iter_type end, ios_base&,
                   ios_base::iostate& err, long long& v) const;
-    iter_type get(iter_type in, iter_type end, ios_base&,
+    \DIFdelbegin %DIFDELCMD < }
+%DIFDELCMD <     %%%
+\DIFdelend iter_type get(iter_type in, iter_type end, ios_base&,
                   ios_base::iostate& err, unsigned short& v) const;
     iter_type get(iter_type in, iter_type end, ios_base&,
                   ios_base::iostate& err, unsigned int& v) const;
@@ -2875,7 +2878,7 @@ namespace std {
   };
 }
 \end{codeblock}
- 
+
 \pnum
 The facet
 \tcode{num_get}
@@ -3424,7 +3427,7 @@ the floating-point conversion specifier as indicated in Table~\ref{tab:localizat
 \tcode{!uppercase}                                          &   \tcode{\%g} \\ \rowsep
 \textit{otherwise}                                          &   \tcode{\%G} \\
 \end{floattable}
- 
+
 For conversions from an integral or floating-point
 type a length modifier is added to the
 conversion specifier as indicated in  Table~\ref{tab:localization.length.modifier.out}.
@@ -3459,12 +3462,12 @@ if \tcode{floatfield != (ios_base::fixed | ios_base::\brk{}scientific)},
 \tcode{str.precision()}
 is specified as precision in the conversion specification.
 Otherwise, no precision is specified.
- 
+
 For conversion from
 \tcode{void*}
 the specifier is
 \tcode{\%p}.
- 
+
 The representations at the end of stage 1 consists of the
 \tcode{char}'s
 that would be printed by a call of
@@ -3481,14 +3484,14 @@ A local variable \tcode{punct} is initialized via
 \begin{codeblock}
 const numpunct<charT>& punct = use_facet< numpunct<charT> >(str.getloc());
 \end{codeblock}
- 
+
 For arithmetic types,
 \tcode{punct.thousands_sep()}
 characters are inserted into the sequence as determined by the value returned
 by
 \tcode{punct.do_grouping()}
 using the method described in~\ref{facet.numpunct.virtuals}
- 
+
 Decimal point characters(.) are replaced by
 \tcode{punct.decimal_point()}
 
@@ -3498,7 +3501,7 @@ A local variable is initialized as
 \begin{codeblock}
 fmtflags adjustfield=   (flags & (ios_base::adjustfield));
 \end{codeblock}
- 
+
 The location of any padding\footnote{The conversion specification
 \tcode{\#o}
 generates a leading
@@ -3529,7 +3532,7 @@ in the sequence after stage 2 is less than
 then enough \tcode{fill} characters are added to the sequence at the position
 indicated for padding to bring the length of the sequence to
 \tcode{str.width()}.
- 
+
 \tcode{str.width(0)}
 is called.
 

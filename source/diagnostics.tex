@@ -683,10 +683,11 @@ libraries unchanged.
 \begin{codeblock}
 namespace std {
   class error_category;
-  const error_category& generic_category() noexcept;
-  const error_category& system_category() noexcept;
+  \DIFaddbegin \DIFadd{const error_category}& \DIFadd{generic_category() noexcept;
+  const error_category}& \DIFadd{system_category() noexcept;
+}
 
-  class error_code;
+  \DIFaddend class error_code;
   class error_condition;
   class system_error;
 
@@ -776,7 +777,7 @@ namespace std {
     value_too_large,                    // \tcode{EOVERFLOW}
     wrong_protocol_type,                // \tcode{EPROTOTYPE}
   };
-  
+
   template <> struct is_error_condition_enum<errc> : true_type { }
 
   error_code make_error_code(errc e) noexcept;
@@ -841,7 +842,7 @@ namespace std {
     virtual bool equivalent(int code, const error_condition& condition) const noexcept;
     virtual bool equivalent(const error_code& code, int condition) const noexcept;
     virtual string message(int ev) const = 0;
-    
+
     bool operator==(const error_category& rhs) const noexcept;
     bool operator!=(const error_category& rhs) const noexcept;
     bool operator<(const error_category& rhs) const noexcept;
@@ -1615,8 +1616,10 @@ system_error(error_code ec, const char* what_arg);
 \pnum
 \postconditions \tcode{code() == ec}.
 
-\tcode{string(what()).find(what_arg) != string::npos}.
-\end{itemdescr}
+\DIFdelbegin \DIFdel{string(what()).
+find(what_arg) != string::npos.
+}\DIFdelend \DIFaddbegin \tcode{string(what()).find(what_arg) != string::npos}\DIFadd{.
+}\DIFaddend \end{itemdescr}
 
 \indexlibrary{\idxcode{system_error}!\idxcode{system_error}}
 \indexlibrary{\idxcode{system_error}!\idxcode{system_error}}
@@ -1646,7 +1649,7 @@ system_error(int ev, const error_category& ecat,
 \pnum
 \postconditions \tcode{code() == error_code(ev, ecat)}.
 
-\tcode{string(what()).find(what_arg) != string::npos}.
+\DIFdelbegin \DIFdel{string(what()).find(what_arg) != string::npos}\DIFdelend \DIFaddbegin \tcode{string(what()).find(what_arg) != string::npos}\DIFaddend .
 \end{itemdescr}
 
 \indexlibrary{\idxcode{system_error}!\idxcode{system_error}}

@@ -956,65 +956,83 @@ as shown in Table~\ref{tab:cpp.library.headers}.
 \tcode{<fstream>} &
 \tcode{<list>} &
 \tcode{<regex>} &
-\tcode{<tuple>} \\
+\DIFdelbegin %DIFDELCMD < \tcode{<typeindex>}         %%%
+\DIFdelend \DIFaddbegin \tcode{<tuple>} \DIFaddend \\
 
 \tcode{<array>} &
 \tcode{<functional>} &
 \tcode{<locale>} &
-\tcode{<scoped_allocator>} &
-\tcode{<type_traits>} \\
+\DIFdelbegin %DIFDELCMD < \tcode{<set>}               %%%
+\DIFdelend \DIFaddbegin \tcode{<scoped_allocator>} \DIFaddend &
+\DIFdelbegin %DIFDELCMD < \tcode{<typeinfo>}          %%%
+\DIFdelend \DIFaddbegin \tcode{<type_traits>} \DIFaddend \\
 
 \tcode{<atomic>} &
 \tcode{<future>} &
 \tcode{<map>} &
-\tcode{<set>} &
-\tcode{<typeindex>} \\
+\DIFdelbegin %DIFDELCMD < \tcode{<sstream>}           %%%
+\DIFdelend \DIFaddbegin \tcode{<set>} \DIFaddend &
+\DIFdelbegin %DIFDELCMD < \tcode{<type_traits>}       %%%
+\DIFdelend \DIFaddbegin \tcode{<typeindex>} \DIFaddend \\
 
 \tcode{<bitset>} &
 \tcode{<initializer_list>} &
 \tcode{<memory>} &
-\tcode{<sstream>} &
-\tcode{<typeinfo>} \\
+\DIFdelbegin %DIFDELCMD < \tcode{<stack>}             %%%
+\DIFdelend \DIFaddbegin \tcode{<sstream>} \DIFaddend &
+\DIFdelbegin %DIFDELCMD < \tcode{<unordered_map>}     %%%
+\DIFdelend \DIFaddbegin \tcode{<typeinfo>} \DIFaddend \\
 
 \tcode{<chrono>} &
 \tcode{<iomanip>} &
 \tcode{<mutex>} &
-\tcode{<stack>} &
-\tcode{<unordered_map>} \\
+\DIFdelbegin %DIFDELCMD < \tcode{<stdexcept>}         %%%
+\DIFdelend \DIFaddbegin \tcode{<stack>} \DIFaddend &
+\DIFdelbegin %DIFDELCMD < \tcode{<unordered_set>}     %%%
+\DIFdelend \DIFaddbegin \tcode{<unordered_map>} \DIFaddend \\
 
 \tcode{<codecvt>} &
 \tcode{<ios>} &
 \tcode{<new>} &
-\tcode{<stdexcept>} &
-\tcode{<unordered_set>} \\
+\DIFdelbegin %DIFDELCMD < \tcode{<streambuf>}         %%%
+\DIFdelend \DIFaddbegin \tcode{<stdexcept>} \DIFaddend &
+\DIFdelbegin %DIFDELCMD < \tcode{<utility>}           %%%
+\DIFdelend \DIFaddbegin \tcode{<unordered_set>} \DIFaddend \\
 
 \tcode{<complex>} &
 \tcode{<iosfwd>} &
 \tcode{<numeric>} &
-\tcode{<streambuf>} &
-\tcode{<utility>} \\
+\DIFdelbegin %DIFDELCMD < \tcode{<string>}            %%%
+\DIFdelend \DIFaddbegin \tcode{<streambuf>} \DIFaddend &
+\DIFdelbegin %DIFDELCMD < \tcode{<valarray>}          %%%
+\DIFdelend \DIFaddbegin \tcode{<utility>} \DIFaddend \\
 
 \tcode{<condition_variable>} &
 \tcode{<iostream>} &
 \tcode{<ostream>} &
-\tcode{<string>} &
-\tcode{<valarray>} \\
+\DIFdelbegin %DIFDELCMD < \tcode{<strstream>}         %%%
+\DIFdelend \DIFaddbegin \tcode{<string>} \DIFaddend &
+\DIFdelbegin %DIFDELCMD < \tcode{<vector>}            %%%
+\DIFdelend \DIFaddbegin \tcode{<valarray>} \DIFaddend \\
 
 \tcode{<deque>} &
 \tcode{<istream>} &
 \tcode{<queue>} &
-\tcode{<strstream>} &
-\tcode{<vector>} \\
+\DIFdelbegin %DIFDELCMD < \tcode{<system_error>}      %%%
+\DIFdelend \DIFaddbegin \tcode{<strstream>} \DIFaddend &
+\DIFaddbegin \tcode{<vector>} \DIFaddend \\
 
 \tcode{<exception>} &
 \tcode{<iterator>} &
 \tcode{<random>} &
-\tcode{<system_error>} & \\
+\DIFdelbegin %DIFDELCMD < \tcode{<thread>}            %%%
+\DIFdelend \DIFaddbegin \tcode{<system_error>} \DIFaddend & \\
 
 \tcode{<forward_list>} &
 \tcode{<limits>} &
 \tcode{<ratio>} &
-\tcode{<thread>} & \\
+\DIFdelbegin %DIFDELCMD < \tcode{<tuple>}             %%%
+\DIFdelend \DIFaddbegin \tcode{<thread>} \DIFaddend & \\
 
 \end{floattable}
 
@@ -1326,8 +1344,10 @@ Expression          &   Post-condition  \\ \capsep
 \end{concepttable}
 
 \indextext{requirements!\idxcode{CopyConstructible}}%
-\begin{concepttable}{\tcode{CopyConstructible} requirements (in addition to \tcode{MoveConstructible})}{copyconstructible}
-{p{1in}p{4.15in}}
+\DIFdelbegin %DIFDELCMD < \begin{concepttable}{\tcode{CopyConstructible} requirements (in addition to MoveConstructible)}{copyconstructible}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \begin{concepttable}{\tcode{CopyConstructible} requirements (in addition to \tcode{MoveConstructible})}{copyconstructible}
+\DIFaddend {p{1in}p{4.15in}}
 \topline
 Expression          &   Post-condition  \\ \capsep
 \tcode{T u = v;}     &   the value of \tcode{v} is unchanged and is equivalent to \tcode{ u}\\ \rowsep
@@ -1350,8 +1370,10 @@ Expression      &   Return type &   Return value    &   Post-condition  \\ \caps
 \end{concepttable}
 
 \indextext{requirements!\idxcode{CopyAssignable}}%
-\begin{concepttable}{\tcode{CopyAssignable} requirements (in addition to \tcode{MoveAssignable})}{copyassignable}
-{p{1in}p{1in}p{1in}p{1.9in}}
+\DIFdelbegin %DIFDELCMD < \begin{concepttable}{\tcode{CopyAssignable} requirements(in addition to MoveAssignable)}{copyassignable}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \begin{concepttable}{\tcode{CopyAssignable} requirements (in addition to \tcode{MoveAssignable})}{copyassignable}
+\DIFaddend {p{1in}p{1in}p{1in}p{1.9in}}
 \topline
 Expression  &   Return type &   Return value    &   Post-condition  \\ \capsep
 \tcode{t = v}   &   \tcode{T\&} &   \tcode{t}   &   \tcode{t} is equivalent to \tcode{v}, the value of \tcode{v} is unchanged\\
@@ -1365,7 +1387,10 @@ Expression      &   Post-condition  \\ \capsep
 \tcode{u.$\sim$T()} &   All resources owned by \tcode{u} are reclaimed, no exception is propagated. \\
 \end{concepttable}
 
-\rSec3[swappable.requirements]{\tcode{Swappable} requirements}
+\DIFdelbegin %DIFDELCMD < \rSec3[swappable.requirements]{Swappable requirements}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \rSec3[swappable.requirements]{\tcode{Swappable} requirements}
+\DIFaddend 
 
 \pnum
 This subclause provides definitions for swappable types and expressions. In these
@@ -1415,7 +1440,8 @@ swappable with any rvalue or lvalue, respectively, of type \tcode{T}.
 
 \pnum
 A type \tcode{X} satisfying any of the iterator requirements~(\ref{iterator.requirements})
-satisfies the requirements of \tcode{ValueSwappable} if,
+\DIFdelbegin \DIFdel{is }%DIFDELCMD < \defn{ValueSwappable} %%%
+\DIFdelend \DIFaddbegin \DIFadd{satisfies the requirements of }\tcode{ValueSwappable} \DIFaddend if,
 for any dereferenceable object
 \tcode{x} of type \tcode{X},
 \tcode{*x} is swappable.
@@ -1449,8 +1475,9 @@ namespace N {
     std::swap(x.m, p.a->m);                     // OK: uses context equivalent to swappable
                                                 // conditions for fundamental types
   }
-  void swap(Proxy p, A& x) { swap(x, p); }      // satisfy symmetry constraint
-}
+  void swap(Proxy p, A& x) { swap(x, p); }      // satisfy symmetry \DIFdelbegin \DIFdel{contraint
+}\DIFdelend \DIFaddbegin \DIFadd{constraint
+}\DIFaddend }
 
 int main() {
   int i = 1, j = 2;
@@ -1551,9 +1578,11 @@ A type \tcode{H} meets the \tcode{Hash} requirements if:
 \begin{itemize}
 \item it is a function object type~(\ref{function.objects}),
 \item it satisfies the requirements of \tcode{CopyConstructible} and
-  \tcode{Destructible}~(\ref{utility.arg.requirements}), and
-\item the expressions shown in Table~\ref{hash}
-are valid and have the indicated semantics.
+  \tcode{Destructible}~(\ref{utility.arg.requirements}), \DIFaddbegin \DIFadd{and
+}\DIFaddend \item the expressions shown in Table~\ref{hash}
+are valid and have the indicated semantics\DIFdelbegin \DIFdel{, and
+}%DIFDELCMD < \item %%%
+\DIFdel{it satisfies all other requirements in this subclause}\DIFdelend .
 \end{itemize}
 
 \pnum
@@ -1622,7 +1651,7 @@ and \tcode{std::forward}, respectively.
 \hline
 \lhdr{Variable} &   \rhdr{Definition}   \\  \capsep
 \endhead
-\tcode{T, U, C}    &   any non-const object type~(\ref{basic.types})       \\ \rowsep
+\tcode{T, U, C}    &   any non-const \DIFdelbegin \DIFdel{, non-reference object type}\DIFdelend \DIFaddbegin \DIFadd{object type~(\ref{basic.types})       }\DIFaddend \\ \rowsep
 \tcode{V}       &   a type convertible to \tcode{T}         \\ \rowsep
 \tcode{X}       &   an Allocator class for type \tcode{T}   \\ \rowsep
 \tcode{Y}       &   the corresponding Allocator class for type \tcode{U}    \\ \rowsep
@@ -2147,7 +2176,8 @@ library may be overridden in a derived class defined in the program~(\ref{class.
 \rSec3[replacement.functions]{Replacement functions}
 
 \pnum
-\indextext{definition!alternate}%
+\DIFdelbegin %DIFDELCMD < \indextext{definition!altermate}%%%
+\DIFdelend \DIFaddbegin \indextext{definition!alternate}\DIFaddend %
 Clauses~\ref{\firstlibchapter} through~\ref{\lastlibchapter} and Annex~\ref{depr}
 describe the behavior of numerous functions defined by
 the \Cpp standard library.
@@ -2708,8 +2738,10 @@ Certain functions in the \Cpp standard library report errors via a
 \tcode{std::error_code}~(\ref{syserr.errcode.overview}) object. That object's
 \tcode{category()} member shall return \tcode{std::system_category()} for
 errors originating from the operating system, or a reference to an
-\impldef{error_category@\tcode{error_category} for errors originating outside the
-operating system} \tcode{error_category} object for errors originating elsewhere.
+\DIFdelbegin %DIFDELCMD < \impldef{error_category@\tcode{error_category} for errors originating outside the
+%DIFDELCMD < operationg system} %%%
+\DIFdelend \DIFaddbegin \impldef{error_category@\tcode{error_category} for errors originating outside the
+operating system} \DIFaddend \tcode{error_category} object for errors originating elsewhere.
 The implementation shall define the possible values of \tcode{value()} for each of these
 error categories. \enterexample For operating systems that are based on POSIX,
 implementations are encouraged to define the \tcode{std::system_category()} values as

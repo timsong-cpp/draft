@@ -686,8 +686,8 @@ struct B {
 };
 
 struct D : B {
-  virtual void f(long) override;  // error: wrong signature overriding \tcode{B::f}
-  virtual void f(int) override;   // OK
+  \DIFaddbegin \DIFadd{virtual }\DIFaddend void f(long) override;  // error: wrong signature overriding \tcode{B::f}
+  \DIFaddbegin \DIFadd{virtual }\DIFaddend void f(int) override;   // OK
 };
 \end{codeblock}
 \exitexample

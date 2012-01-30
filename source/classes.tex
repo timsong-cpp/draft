@@ -85,9 +85,13 @@ as a \grammarterm{base-type-specifier} in a \grammarterm{base-clause}
 (Clause~\ref{class.derived}), the program is ill-formed.
 
 \pnum
-Complete objects and member subobjects of class type shall have nonzero
+\DIFdelbegin %DIFDELCMD < \indextext{definition!empty class}%%%
+%DIF < 
+\DIFdelend Complete objects and member subobjects of class type shall have nonzero
 size.\footnote{Base class subobjects are not so constrained.}
-\enternote
+\DIFdelbegin %DIFDELCMD < \indextext{\idxcode{sizeof}!empty class}%%%
+%DIF < 
+\DIFdelend \enternote
 Class objects can be assigned, passed as arguments to functions, and
 returned by functions (except objects of classes for which copying or moving has
 been restricted; see~\ref{class.copy}). Other plausible operators, such

@@ -723,11 +723,13 @@ namespace std {
   // \ref{string.io}, inserters and extractors:
   template<class charT, class traits, class Allocator>
     basic_istream<charT,traits>&
-      operator>>(basic_istream<charT,traits>& is,
+      operator>>(basic_istream<charT,traits>& \DIFdelbegin %DIFDELCMD < & %%%
+\DIFdelend is,
                  basic_string<charT,traits,Allocator>& str);
   template<class charT, class traits, class Allocator>
     basic_ostream<charT, traits>&
-      operator<<(basic_ostream<charT, traits>& os,
+      operator<<(basic_ostream<charT, traits>& \DIFdelbegin %DIFDELCMD < & %%%
+\DIFdelend os,
                  const basic_string<charT,traits,Allocator>& str);
   template<class charT, class traits, class Allocator>
     basic_istream<charT,traits>&
@@ -1778,10 +1780,11 @@ reference       operator[](size_type pos);
 \requires \tcode{pos <= size()}.
 
 \pnum
-\returns \tcode{*(begin() + pos)} if \tcode{pos < size()}. Otherwise,
-returns a reference to an object of type \tcode{charT} with value
-\tcode{charT()}, where modifying the object leads to
-undefined behavior.
+\returns \tcode{*(begin() + pos)} if \tcode{pos < size()}\DIFdelbegin \DIFdel{, otherwise }\DIFdelend \DIFaddbegin \DIFadd{. Otherwise,
+returns }\DIFaddend a reference to an object of type \DIFdelbegin %DIFDELCMD < \tcode{T} %%%
+\DIFdelend \DIFaddbegin \tcode{charT} \DIFaddend with value
+\tcode{charT()}\DIFdelbegin \DIFdel{; the referenced value shall not be modified}\DIFdelend \DIFaddbegin \DIFadd{, where modifying the object leads to
+undefined behavior}\DIFaddend .
 
 \pnum
 \throws Nothing.
@@ -1860,7 +1863,10 @@ basic_string&
 
 \begin{itemdescr}
 \pnum
-\effects Calls \tcode{append(str)}.
+\effects Calls \DIFdelbegin \DIFdel{append(str.
+data, str.size()).
+}\DIFdelend \DIFaddbegin \tcode{append(str)}\DIFadd{.
+}\DIFaddend 
 
 \pnum
 \returns
@@ -1890,7 +1896,8 @@ basic_string& operator+=(charT c);
 
 \begin{itemdescr}
 \pnum
-\effects Calls \tcode{push_back(c)};
+\effects Calls \DIFdelbegin %DIFDELCMD < \tcode{append(1, c)}%%%
+\DIFdelend \DIFaddbegin \tcode{push_back(c)}\DIFaddend ;
 
 \pnum
 \returns
@@ -1905,7 +1912,8 @@ basic_string& operator+=(initializer_list<charT> il);
 
 \begin{itemdescr}
 \pnum
-\effects Calls \tcode{append(il)}.
+\effects Calls \DIFdelbegin %DIFDELCMD < \tcode{append(il.first(), il.size())}%%%
+\DIFdelend \DIFaddbegin \tcode{append(il)}\DIFaddend .
 
 \pnum
 \returns \tcode{*this}.
@@ -2050,8 +2058,8 @@ basic_string& append(initializer_list<charT> il);
 \effects Calls \tcode{append(il.begin(), il.size())}.
 
 \pnum
-\returns
-\tcode{*this}.
+\DIFaddbegin \returns
+\DIFaddend \tcode{*this}.
 \end{itemdescr}
 
 \indexlibrary{\idxcode{push_back}!\idxcode{basic_string}}%
@@ -2324,7 +2332,7 @@ basic_string&
 \tcode{traits::length(s) + 1} elements of \tcode{charT}.
 
 \pnum
-\effects Equivalent to \tcode{insert(pos, s, traits::length(s))}.
+\effects \DIFdelbegin \DIFdel{Calls }\DIFdelend \DIFaddbegin \DIFadd{Equivalent to }\DIFaddend \tcode{insert(pos, s, traits::length(s))}.
 
 \pnum
 \returns
@@ -2340,7 +2348,8 @@ basic_string&
 
 \begin{itemdescr}
 \pnum
-\effects Equivalent to \tcode{insert(pos, basic_string(n, c))}.
+\effects Equivalent to \DIFdelbegin %DIFDELCMD < \tcode{insert(pos basic_string(n, c))}%%%
+\DIFdelend \DIFaddbegin \tcode{insert(pos, basic_string(n, c))}\DIFaddend .
 
 \pnum
 \returns

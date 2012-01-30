@@ -45,7 +45,9 @@ namespace std {
   #define ATOMIC_INT_LOCK_FREE @\unspec@
   #define ATOMIC_LONG_LOCK_FREE @\unspec@
   #define ATOMIC_LLONG_LOCK_FREE @\unspec@
-  #define ATOMIC_POINTER_LOCK_FREE @\unspec@
+  #define ATOMIC\DIFdelbegin \DIFdel{_LLONG_LOCK_FREE @}%DIFDELCMD < \unspec%%%
+\DIFdel{@
+  #define ATOMIC}\DIFdelend _POINTER_LOCK_FREE @\unspec@
 
   // \ref{atomics.types.generic}, generic types
   template<class T> struct atomic;
@@ -1254,7 +1256,7 @@ The \tcode{atomic_flag} type shall have standard layout. It shall have a trivial
 \pnum
 The macro \tcode{ATOMIC_FLAG_INIT} shall be defined in such a way that it can be used to initialize an object of type \tcode{atomic_flag} to the
 clear state. For a static-duration object, that initialization shall be static. It is unspecified whether an
-uninitialized \tcode{atomic_flag} object has an initial state of set or clear.\enterexample
+\DIFdelbegin \DIFdel{unitialized }\DIFdelend \DIFaddbegin \DIFadd{uninitialized }\DIFaddend \tcode{atomic_flag} object has an initial state of set or clear.\enterexample
 
 \begin{codeblock}
 atomic_flag guard = ATOMIC_FLAG_INIT;

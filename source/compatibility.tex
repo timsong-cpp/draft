@@ -1003,7 +1003,8 @@ In addition the following C compatibility headers are new:
 \tcode{<cinttypes>},
 \tcode{<cstdalign>},
 \tcode{<cstdbool>},
-\tcode{<cstdint>},
+\DIFdelbegin %DIFDELCMD < \tcode{<cstding>}%%%
+\DIFdelend \DIFaddbegin \tcode{<cstdint>}\DIFaddend ,
 \tcode{<ctgmath>},
 and
 \tcode{<cuchar>}.
@@ -1115,7 +1116,7 @@ in this International Standard.
 \change \tcode{basic_string} requirements no longer allow reference-counted
 strings
 \rationale Invalidation is subtly different with reference-counted strings.
-This change regularizes behavior for this International Standard.
+This change regularizes \DIFdelbegin \DIFdel{behavor }\DIFdelend \DIFaddbegin \DIFadd{behavior }\DIFaddend for this International Standard.
 \effect
 Valid \CppIII code may execute differently in this International Standard.
 

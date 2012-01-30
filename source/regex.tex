@@ -67,7 +67,7 @@ correspond to a sequence of characters defined by the pattern.
 \definition{primary equivalence class}{defns.regex.primary.equivalence.class}
 a set of one or more characters which
 share the same primary sort key: that is the sort key weighting that
-depends only upon character shape, and not accents, case, or
+depends only upon character shape, and not \DIFdelbegin \DIFdel{accentation}\DIFdelend \DIFaddbegin \DIFadd{accents}\DIFaddend , case, or
 locale specific tailorings.
 
 \definition{regular expression}{defns.regex.regular.expression}
@@ -3545,7 +3545,7 @@ namespace std {
      typedef const value_type*                    pointer;
      typedef const value_type&                    reference;
      typedef std::forward_iterator_tag            iterator_category;
-   
+
      regex_iterator();
      regex_iterator(BidirectionalIterator a, BidirectionalIterator b, 
                     const regex_type& re, 
