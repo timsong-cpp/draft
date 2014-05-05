@@ -845,7 +845,8 @@ all declarations, including the definition, of any function
 that overrides that virtual function in any derived class
 shall only allow exceptions that are allowed by the
 \grammarterm{exception-specification}
-of the base class virtual function.
+of the base class virtual function,
+unless the overriding function is defined as deleted.
 \enterexample
 \begin{codeblock}
 struct B {
@@ -1020,41 +1021,95 @@ An
 is not considered part of a function's type.
 
 \pnum
-An inheriting constructor~(\ref{class.inhctor}) and an implicitly declared
-special member function (Clause~\ref{special}) have an
-\grammarterm{exception-specification}.
-If
-\tcode{f}
-is an inheriting constructor or an implicitly declared default constructor,
-copy constructor,
-move constructor,
-destructor,
-copy assignment operator,
-or move assignment operator,
-its implicit
-\grammarterm{exception-specification} specifies
-the
-\grammarterm{type-id}
-\tcode{T}
-if and only if
-\tcode{T}
-is allowed by the \grammarterm{exception-specification} of a function directly
-invoked by \tcode{f}'s
-implicit
-definition;
-\tcode{f}
-allows all exceptions if any function it directly invokes allows all
-exceptions, and
-\tcode{f}
-has the \grammarterm{exception-specification} \tcode{noexcept(true)} if every function it directly invokes allows no
-exceptions.
-\enternote It follows that \tcode{f} has the
-\grammarterm{exception-specification} \tcode{noexcept(true)} if it
-invokes no other functions.
+\indextext{potential exceptions!set of}%
+A \term{set of potential exceptions} may contain types and the special value
+``any''. The \term{set of potential exceptions of an expression} is the union
+of all sets of potential exceptions of each potentially-evaluated subexpression
+\placeholder{e}:
+\begin{itemize}
+\item If \placeholder{e} is a core constant expression~(\ref{expr.const}),
+the set is empty.
+\item Otherwise, if \placeholder{e} is a function call~(\ref{expr.call})
+whose \grammarterm{postfix-expression} is not a (possibly parenthesized)
+\grammarterm{id-expression}~(\ref{expr.prim.general}) or class member
+access~(\ref{expr.ref}), the set consists of ``any''.
+\item Otherwise, if \placeholder{e} invokes a function, member function, or
+function pointer (including implicit calls, such as to an overloaded operator
+or to an allocation function in a \grammarterm{new-expression}):
+\begin{itemize}
+\item if its declaration has a non-throwing
+\grammarterm{exception-specification}, the set is empty;
+\item otherwise, if its declaration has a
+\grammarterm{dynamic-exception-specification}, the set consists of every type
+in that \grammarterm{dynamic-exception-specification};
+\item otherwise, the set consists of ``any''.
+\end{itemize}
+\item If \placeholder{e} is a
+\grammarterm{throw-expression}~(\ref{except.throw}), the set consists of the
+type of the exception object that would be initialized by the operand if
+present, or ``any'' otherwise.
+\item If \placeholder{e} is a \tcode{dynamic_cast} expression that casts to a
+reference type and requires a run-time check~(\ref{expr.dynamic.cast}),
+the set consists of the type \tcode{std::bad_cast}.
+\item If \placeholder{e} is a \tcode{typeid} expression applied to a glvalue
+expression whose type is a polymorphic class type~(\ref{expr.typeid}),
+the set consists of the type \tcode{std::bad_typeid}.
+\item If \placeholder{e} is a \grammarterm{new-expression} with a non-constant
+expression in the \grammarterm{noptr-new-declarator}~(\ref{expr.new}),
+the set also includes the type \tcode{std::bad_array_new_length}.
+\item If none of the previous items applies, the set is the empty set.
+\end{itemize}
+
+\pnum
+The \term{set of potential exceptions of a function} \placeholder{f}
+that is an inheriting constructor or an implicitly-declared special member
+function of some class \placeholder{X} is defined as follows:
+\begin{itemize}
+\item If \placeholder{f} is a constructor, the set is the union of the sets of
+potential exceptions of the constructor invocations for \placeholder{X}'s
+non-variant non-static data members, for \placeholder{X}'s direct base classes,
+and, if \placeholder{X} is non-abstract~(\ref{class.abstract}), for
+\placeholder{X}'s virtual base classes, as selected by overload resolution for
+the implicit definition of \placeholder{f}~(\ref{class.ctor}), including
+default argument expressions used in such invocations.
+\enternote
+Even though destructors for fully constructed subobjects are invoked when an
+exception is thrown during the execution of a constructor~(\ref{except.ctor}),
+their \grammarterm{exception-specification}{s} do not contribute to the
+\grammarterm{exception-specification} of the constructor, because an exception
+thrown from such a destructor could never escape the
+constructor~(\ref{except.throw}, \ref{except.terminate}).
 \exitnote
+\item If \placeholder{f} is a default constructor, the set also contains all
+members of the sets of potential exceptions of the initialization of non-static
+data members from \grammarterm{brace-or-equal-initializers}.
+\item If \placeholder{f} is an assignment operator, the set is the union of the
+sets of potential exceptions of the assignment operator invocations for
+\placeholder{X}'s non-variant non-static data members and for \placeholder{X}'s
+virtual and direct base classes, as selected by overload resolution for the
+implicit definition of \placeholder{f}~(\ref{class.copy}), including default
+argument expressions used in such invocations.
+\item If \placeholder{f} is a destructor, the set is the union of the sets of
+potential exceptions of the destructor invocations for \placeholder{X}'s
+non-variant non-static data members and for \placeholder{X}'s virtual and
+direct base classes.
+\end{itemize}
+
+\pnum
+An inheriting constructor~(\ref{class.inhctor}) and an implicitly-declared
+special member function (Clause~\ref{special}) are considered to have an
+implicit \grammarterm{exception-specification}.
 \enternote An instantiation of an inheriting constructor template has
 an implied \grammarterm{exception-specification} as if it were a non-template
 inheriting constructor.\exitnote
+The implicit \grammarterm{exception-specification} is
+\tcode{noexcept(false)} if the set of potential exceptions of the function contains
+``any'';
+otherwise, if that set contains at least one type,
+the implicit \grammarterm{exception-specification} specifies
+each type contained in the set;
+otherwise, the implicit \grammarterm{exception-specification} is
+\tcode{noexcept(true)}.
 \enterexample
 \begin{codeblock}
 struct A {
@@ -1065,8 +1120,8 @@ struct A {
 };
 struct B {
   B() throw();
-  B(const B&) = default; // Declaration of \tcode{B::B(const B\&) noexcept(true)}
-  B(B&&) throw(Y);
+  B(const B&) throw();
+  B(B&&, int = (throw Y(), 0)) noexcept;
   ~B() throw(Y);
 };
 struct D : public A, public B {
