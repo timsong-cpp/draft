@@ -2243,6 +2243,19 @@ copy/move constructor~(\ref{class.ctor})
 and copy/move assignment operator~(\ref{over.ass}).
 
 \pnum
+When an object of class type \placeholder{X}
+is passed to or returned from a function,
+if \placeholder{X} has a trivial, accessible copy or move constructor that is not deleted,
+and \placeholder{X} has no non-trivial copy constructors, move constructors, or destructors,
+implementations are permitted to perform an additional copy or move of the object
+using the trivial constructor
+(even if it would not be selected by overload resolution to perform a copy or move of the object).
+\enternote
+This latitude is granted to allow objects of class type to be
+passed to or returned from functions in registers
+\exitnote
+
+\pnum
 \indextext{constructor!copy|(}%
 \indextext{constructor!move|(}%
 A non-template constructor for class
