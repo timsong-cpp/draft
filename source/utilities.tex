@@ -4172,9 +4172,6 @@ The buffer shall have been previously allocated by \tcode{get_temporary_buffer}.
 \rSec2[specialized.algorithms]{Specialized algorithms}
 
 \pnum
-All the iterators that are used as template parameters in the following
-algorithms are required to  have their \tcode{operator*} return an object
-for which \tcode{operator\&} is defined and returns a pointer to \tcode{T}.
 In the algorithm \tcode{uninitialized_copy}, the template parameter
 \tcode{InputIterator} is required to satisfy the requirements of an input
 iterator~(\ref{input.iterators}). In all of the following algorithms,
