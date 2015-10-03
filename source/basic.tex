@@ -2667,15 +2667,15 @@ at some point after the first statement of \tcode{main}, \tcode{b} will
 be initialized prior to its use in \tcode{A::A}. \exitexample
 
 \pnum
-It is \impldef{dynamic initialization of thread-local objects before entry} whether the
-dynamic initialization of a non-local variable with static or
-thread storage duration
-is done before the first statement of the initial function of the thread. If the
-initialization is deferred to some point in time after the first statement of the
-initial function of the thread, it shall occur before the first
-odr-use~(\ref{basic.def.odr}) of any variable with
-thread storage duration defined in the same translation unit as the variable to be
-initialized.
+It is \impldef{dynamic initialization of thread-local objects before entry}
+whether the dynamic initialization of a non-local variable with static
+or thread storage duration is sequenced before
+the first statement of the initial function of the thread.
+If the initialization is deferred to some point in time sequenced after
+the first statement of the initial function of the thread,
+it is sequenced before the first odr-use~(\ref{basic.def.odr})
+of any variable with thread storage duration defined
+in the same translation unit as the variable to be initialized.
 
 \pnum
 If the initialization of a non-local variable with static or thread storage duration
