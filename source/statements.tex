@@ -721,9 +721,9 @@ std::pair<std::string,int> f(const char* p, int x) {
 }
 \end{codeblock}
 \exitexample
-Flowing off the end of a function is equivalent to a \tcode{return} with
-no value; this results in undefined behavior in a value-returning
-function.
+Flowing off the end of a value-returning function is undefined behavior.
+Flowing off the end of any other function is equivalent to a \tcode{return}
+with no value.
 
 \pnum
 The copy-initialization of the returned entity is sequenced before the
