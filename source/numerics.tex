@@ -2650,10 +2650,16 @@ specified in this section~\ref{rand.eng}
 is constant.
 
 \pnum
-Except
-where specified otherwise,
+Except where specified otherwise,
 no function described in this section~\ref{rand.eng}
 throws an exception.
+
+\pnum
+Every function described in this section~\ref{rand.eng}
+that has a function parameter \tcode{q} of type \tcode{Sseq\&}
+for a template type parameter named \tcode{Sseq}
+that is different from type \tcode{std::seed_seq}
+throws what and when the invocation of \tcode{q.generate} throws.
 
 \pnum
 Descriptions are provided in this section~\ref{rand.eng}
@@ -2662,9 +2668,10 @@ that are not described in  \mbox{\ref{rand.req.eng}}
 or for operations where there is additional semantic information.
 In particular,
 declarations for copy constructors,
-for copy assignment operators,
-for streaming operators,
-and for equality and inequality operators
+copy assignment operators,
+streaming operators,
+equality operators,
+and inequality operators
 are not shown in the synopses.
 
 \pnum
@@ -3187,7 +3194,7 @@ template<class Sseq> explicit subtract_with_carry_engine(Sseq& q);
 
 \pnum
 Each type instantiated
-from a class template specified in this section~\ref{rand.eng}
+from a class template specified in this section~\ref{rand.adapt}
 satisfies the requirements
 of a random number engine adaptor~(\ref{rand.req.adapt}) type.
 
@@ -3198,10 +3205,16 @@ specified in this section~\ref{rand.adapt}
 is constant.
 
 \pnum
-Except
-where specified otherwise,
+Except where specified otherwise,
 no function described in this section~\ref{rand.adapt}
 throws an exception.
+
+\pnum
+Every function described in this section~\ref{rand.adapt}
+that has a function parameter \tcode{q} of type \tcode{Sseq\&}
+for a template type parameter named \tcode{Sseq}
+that is different from type \tcode{std::seed_seq}
+throws what and when the invocation of \tcode{q.generate} throws.
 
 \pnum
 Descriptions are provided in this section~\ref{rand.adapt}
@@ -3210,9 +3223,10 @@ that are not described in section~\ref{rand.req.adapt}
 or for operations where there is additional semantic information.
 In particular,
 declarations for copy constructors,
-for copy assignment operators,
-for streaming operators,
-and for equality and inequality operators
+copy assignment operators,
+streaming operators,
+equality operators,
+and inequality operators
 are not shown in the synopses.
 
 \pnum
@@ -4219,9 +4233,10 @@ that are not described in \ref{rand.req.dist}
 or for operations where there is additional semantic information.
 In particular,
 declarations for copy constructors,
-for copy assignment operators,
-for streaming operators,
-and for equality and inequality operators
+copy assignment operators,
+streaming operators,
+equality operators,
+and inequality operators
 are not shown in the synopses.
 
 \pnum
