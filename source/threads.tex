@@ -831,13 +831,13 @@ namespace std {
   class timed_mutex;
   class recursive_timed_mutex;
 
-  struct defer_lock_t { };
-  struct try_to_lock_t { };
-  struct adopt_lock_t { };
+  struct defer_lock_t; // see below
+  struct try_to_lock_t; // see below
+  struct adopt_lock_t; // see below
 
-  constexpr defer_lock_t  defer_lock { };
-  constexpr try_to_lock_t try_to_lock { };
-  constexpr adopt_lock_t  adopt_lock { };
+  constexpr defer_lock_t  defer_lock { @\textit{unspecified}@ };
+  constexpr try_to_lock_t try_to_lock { @\textit{unspecified}@ };
+  constexpr adopt_lock_t  adopt_lock { @\textit{unspecified}@ };
 
   template <class Mutex> class lock_guard;
   template <class Mutex> class unique_lock;
@@ -859,6 +859,21 @@ namespace std {
     void call_once(once_flag& flag, Callable&& func, Args&&... args);
 }
 \end{codeblock}
+
+\pnum
+Type \tcode{defer_lock_t} shall not have a default constructor.
+It shall be a literal type. Constant \tcode{defer_lock} shall be
+initialized with an argument of literal type.
+
+\pnum
+Type \tcode{try_to_lock_t} shall not have a default constructor.
+It shall be a literal type. Constant \tcode{try_to_lock} shall be
+initialized with an argument of literal type.
+
+\pnum
+Type \tcode{adopt_lock_t} shall not have a default constructor.
+It shall be a literal type. Constant \tcode{adopt_lock} shall be
+initialized with an argument of literal type.
 
 \synopsis{Header \tcode{<shared_mutex>} synopsis}
 \indexlibrary{\idxhdr{shared_mutex}}%

@@ -136,8 +136,8 @@ namespace std {
     constexpr const T&& get(const pair<U, T>&& p) noexcept;
 
   // \ref{pair.piecewise}, pair piecewise construction
-  struct piecewise_construct_t { };
-  constexpr piecewise_construct_t piecewise_construct{};
+  struct piecewise_construct_t; // see below
+  constexpr piecewise_construct_t piecewise_construct { @\textit{unspecified}@ };
   template <class... Types> class tuple;  // defined in \tcode{<tuple>}
 @
 \indexlibrary{\idxcode{index_sequence}}%
@@ -158,6 +158,11 @@ namespace std {
     using index_sequence_for = make_index_sequence<sizeof...(T)>;
 }
 \end{codeblock}
+
+\pnum
+Type \tcode{piecewise_construct_t} shall not have a default constructor.
+It shall be a literal type. Constant \tcode{piecewise_construct} shall be
+initialized with an argument of literal type.
 
 \rSec2[operators]{Operators}
 
@@ -945,8 +950,8 @@ template <class T, class U>
 \indexlibrary{\idxcode{piecewise_construct_t}}%
 \indexlibrary{\idxcode{piecewise_construct}}%
 \begin{itemdecl}
-struct piecewise_construct_t { };
-constexpr piecewise_construct_t piecewise_construct{};
+struct piecewise_construct_t;
+constexpr piecewise_construct_t piecewise_construct { @\textit{unspecified}@ };
 \end{itemdecl}
 
 \pnum
@@ -2950,8 +2955,8 @@ namespace std {
     void*& ptr, std::size_t& space);
 
   // \ref{allocator.tag}, allocator argument tag
-  struct allocator_arg_t { };
-  constexpr allocator_arg_t allocator_arg{};
+  struct allocator_arg_t; // see below
+  constexpr allocator_arg_t allocator_arg { @\textit{unspecified}@ };
 
   // \ref{allocator.uses}, \tcode{uses_allocator}
   template <class T, class Alloc> struct uses_allocator;
@@ -3161,6 +3166,11 @@ namespace std {
   template <class T> struct hash<shared_ptr<T> >;
 }
 \end{codeblock}
+
+\pnum
+Type \tcode{allocator_arg_t} shall not have a default constructor.
+It shall be a literal type. Constant \tcode{allocator_arg} shall be
+initialized with an argument of literal type.
 
 \rSec2[pointer.traits]{Pointer traits}
 
@@ -3431,8 +3441,8 @@ arguments for the same buffer.  \exitnote
 \indexlibrary{\idxcode{allocator_arg}}
 \begin{itemdecl}
 namespace std {
-  struct allocator_arg_t { };
-  constexpr allocator_arg_t allocator_arg{};
+  struct allocator_arg_t;
+  constexpr allocator_arg_t allocator_arg { @\textit{unspecified}@ };
 }
 \end{itemdecl}
 

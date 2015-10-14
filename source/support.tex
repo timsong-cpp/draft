@@ -1513,7 +1513,7 @@ It also defines components for reporting storage management errors.
 namespace std {
   class bad_alloc;
   class bad_array_new_length;
-  struct nothrow_t {};
+  struct nothrow_t; // see below
   extern const nothrow_t nothrow;
   typedef void (*new_handler)();
   new_handler get_new_handler() noexcept;
@@ -1536,6 +1536,9 @@ void* operator new[](std::size_t size, void* ptr) noexcept;
 void  operator delete  (void* ptr, void*) noexcept;
 void  operator delete[](void* ptr, void*) noexcept;
 \end{codeblock}
+
+\pnum
+Type \tcode{nothrow_t} shall not have a default constructor.
 
 \xref~\ref{intro.memory}, \ref{basic.stc.dynamic},
 \ref{expr.new}, \ref{expr.delete}, \ref{class.free},
