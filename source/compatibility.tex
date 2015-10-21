@@ -1433,6 +1433,19 @@ translate trigraphs as specified in \CppXIV if they appear outside of a raw
 string literal, as part of the implementation-defined mapping from physical
 source file characters to the basic source character set.
 
+\rSec2[diff.cpp14.dcl]{Clause \ref{dcl.dcl}: declarations}
+
+\ref{dcl.spec.auto}
+\change \tcode{auto} deduction from \grammarterm{braced-init-list}.
+\rationale More intuitive deduction behavior.
+\effect
+Valid \CppXIV code may fail to compile or may change meaning
+in this International Standard. For example:
+\begin{codeblock}
+auto x1{1};    // was \tcode{std::initializer_list<int>}, now \tcode{int}
+auto x2{1, 2}; // was \tcode{std::initializer_list<int>}, now ill-formed
+\end{codeblock}
+
 \rSec2[diff.cpp14.depr]{Annex D: compatibility features}
 
 \change
