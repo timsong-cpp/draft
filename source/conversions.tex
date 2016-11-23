@@ -228,7 +228,7 @@ types) are never cv-qualified~(\ref{dcl.fct}).
 \pnum
 A conversion can add cv-qualifiers at levels other than the first in
 multi-level pointers, subject to the following rules:\footnote{These rules ensure that const-safety is preserved by the conversion.}
-\begin{indented}
+
 Two pointer types T1 and T2 are \term{similar} if there exists a
 type \cvqual{T} and integer $n > 0$ such that:
 
@@ -262,7 +262,6 @@ satisfied:
 \item if the $\mathit{cv}_{1,j}$ and $\mathit{cv}_{2,j}$ are different,
 then \tcode{const} is in every $\mathit{cv}_{2,k}$ for $0 < k < j$.
 \end{itemize}
-\end{indented}
 
 \enternote 
 if a program could assign a pointer of type \tcode{T**} to a pointer of
