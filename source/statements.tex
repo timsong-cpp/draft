@@ -542,7 +542,7 @@ range-based \tcode{for} statement
 is equivalent to
 
 \begin{codeblock}
-{
+@\{@
   auto && __range = range-init;
   for ( auto __begin = begin-expr,
              __end = end-expr;
@@ -551,7 +551,7 @@ is equivalent to
     @\textit{for-range-declaration}@ = *__begin;
     @\textit{statement}@
   }
-}
+@\}@
 \end{codeblock}
 
 where \tcode{__range}, \tcode{__begin}, and \tcode{__end} are variables defined for
