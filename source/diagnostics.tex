@@ -917,6 +917,7 @@ namespace std {
 
 \rSec3[syserr.errcat.virtuals]{Virtual members}
 
+\begin{removedblock}
 \indexlibrary{\idxcode{error_category}!destructor}%
 \begin{itemdecl}
 virtual ~error_category();
@@ -926,6 +927,7 @@ virtual ~error_category();
 \pnum
 \effects Destroys an object of class \tcode{error_category}.
 \end{itemdescr}
+\end{removedblock}
 
 \indexlibrarymember{name}{error_category}%
 \begin{itemdecl}
@@ -980,6 +982,7 @@ virtual string message(int ev) const = 0;
 
 \rSec3[syserr.errcat.nonvirtuals]{Non-virtual members}
 
+\begin{removedblock}
 \indexlibrary{\idxcode{error_category}!constructor}%
 \begin{itemdecl}
 constexpr error_category() noexcept;
@@ -989,6 +992,7 @@ constexpr error_category() noexcept;
 \pnum
 \effects Constructs an object of class \tcode{error_category}.
 \end{itemdescr}
+\end{removedblock}
 
 \indexlibrarymember{operator==}{error_category}%
 \begin{itemdecl}
