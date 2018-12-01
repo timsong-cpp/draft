@@ -1245,8 +1245,10 @@ template<class ErrorCodeEnum>
 \ensures \tcode{*this == make_error_code(e)}.
 
 \pnum
-\remarks \raggedright This constructor shall not participate in overload resolution unless\linebreak
-\tcode{is_error_code_enum_v<ErrorCodeEnum>} is \tcode{true}.
+\removed{\remarks \raggedright This constructor shall not participate in overload resolution unless\linebreak
+\tcode{is_error_code_enum_v<ErrorCodeEnum>} is \tcode{true}.}
+
+\added{\constraints \tcode{is_error_code_enum_v<ErrorCodeEnum>}}
 \end{itemdescr}
 
 \rSec3[syserr.errcode.modifiers]{Modifiers}
@@ -1275,8 +1277,10 @@ template<class ErrorCodeEnum>
 \returns \tcode{*this}.
 
 \pnum
-\remarks \raggedright This operator shall not participate in overload resolution unless\linebreak
-\tcode{is_error_code_enum_v<ErrorCodeEnum>} is \tcode{true}.
+\removed{\remarks \raggedright This operator shall not participate in overload resolution unless\linebreak
+\tcode{is_error_code_enum_v<ErrorCodeEnum>} is \tcode{true}.}
+
+\added{\constraints \tcode{is_error_code_enum_v<ErrorCodeEnum>}}
 \end{itemdescr}
 
 \indexlibrarymember{clear}{error_code}%
@@ -1448,8 +1452,10 @@ template<class ErrorConditionEnum>
 \ensures \tcode{*this == make_error_condition(e)}.
 
 \pnum
-\remarks \raggedright This constructor shall not participate in overload resolution unless\linebreak
-\tcode{is_error_condition_enum_v<ErrorConditionEnum>} is \tcode{true}.
+\removed{\remarks \raggedright This constructor shall not participate in overload resolution unless\linebreak
+\tcode{is_error_condition_enum_v<ErrorConditionEnum>} is \tcode{true}.}
+
+\added{\constraints \tcode{is_error_code_enum_v<ErrorCodeEnum>}}
 \end{itemdescr}
 
 
@@ -1479,8 +1485,10 @@ template<class ErrorConditionEnum>
 \returns \tcode{*this}.
 
 \pnum
-\remarks \raggedright This operator shall not participate in overload resolution unless\linebreak
-\tcode{is_error_condition_enum_v<ErrorConditionEnum>} is \tcode{true}.
+\removed{\remarks \raggedright This operator shall not participate in overload resolution unless\linebreak
+\tcode{is_error_condition_enum_v<ErrorConditionEnum>} is \tcode{true}.}
+
+\added{\constraints \tcode{is_error_code_enum_v<ErrorCodeEnum>}}
 \end{itemdescr}
 
 \indexlibrarymember{clear}{error_condition}%
