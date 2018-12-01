@@ -101,9 +101,9 @@ logic_error(const string& what_arg);
 
 \begin{itemdescr}
 \pnum
-\effects
+\removed{\effects
 Constructs an object of class
-\tcode{logic_error}.
+\tcode{logic_error}.}
 
 \pnum
 \ensures
@@ -117,9 +117,9 @@ logic_error(const char* what_arg);
 
 \begin{itemdescr}
 \pnum
-\effects
+\removed{\effects
 Constructs an object of class
-\tcode{logic_error}.
+\tcode{logic_error}.}
 
 \pnum
 \ensures
@@ -152,9 +152,9 @@ domain_error(const string& what_arg);
 
 \begin{itemdescr}
 \pnum
-\effects
+\removed{\effects
 Constructs an object of class
-\tcode{domain_error}.
+\tcode{domain_error}.}
 
 \pnum
 \ensures
@@ -168,9 +168,9 @@ domain_error(const char* what_arg);
 
 \begin{itemdescr}
 \pnum
-\effects
+\removed{\effects
 Constructs an object of class
-\tcode{domain_error}.
+\tcode{domain_error}.}
 
 \pnum
 \ensures
@@ -202,9 +202,9 @@ invalid_argument(const string& what_arg);
 
 \begin{itemdescr}
 \pnum
-\effects
+\removed{\effects
 Constructs an object of class
-\tcode{invalid_argument}.
+\tcode{invalid_argument}.}
 
 \pnum
 \ensures
@@ -218,9 +218,9 @@ invalid_argument(const char* what_arg);
 
 \begin{itemdescr}
 \pnum
-\effects
+\removed{\effects
 Constructs an object of class
-\tcode{invalid_argument}.
+\tcode{invalid_argument}.}
 
 \pnum
 \ensures
@@ -254,9 +254,9 @@ length_error(const string& what_arg);
 
 \begin{itemdescr}
 \pnum
-\effects
+\removed{\effects
 Constructs an object of class
-\tcode{length_error}.
+\tcode{length_error}.}
 
 \pnum
 \ensures
@@ -270,9 +270,9 @@ length_error(const char* what_arg);
 
 \begin{itemdescr}
 \pnum
-\effects
+\removed{\effects
 Constructs an object of class
-\tcode{length_error}.
+\tcode{length_error}.}
 
 \pnum
 \ensures
@@ -306,9 +306,9 @@ out_of_range(const string& what_arg);
 
 \begin{itemdescr}
 \pnum
-\effects
+\removed{\effects
 Constructs an object of class
-\tcode{out_of_range}.
+\tcode{out_of_range}.}
 
 \pnum
 \ensures
@@ -322,9 +322,9 @@ out_of_range(const char* what_arg);
 
 \begin{itemdescr}
 \pnum
-\effects
+\removed{\effects
 Constructs an object of class
-\tcode{out_of_range}.
+\tcode{out_of_range}.}
 
 \pnum
 \ensures
@@ -357,9 +357,9 @@ runtime_error(const string& what_arg);
 
 \begin{itemdescr}
 \pnum
-\effects
+\removed{\effects
 Constructs an object of class
-\tcode{runtime_error}.
+\tcode{runtime_error}.}
 
 \pnum
 \ensures
@@ -373,9 +373,9 @@ runtime_error(const char* what_arg);
 
 \begin{itemdescr}
 \pnum
-\effects
+\removed{\effects
 Constructs an object of class
-\tcode{runtime_error}.
+\tcode{runtime_error}.}
 
 \pnum
 \ensures
@@ -408,9 +408,9 @@ range_error(const string& what_arg);
 
 \begin{itemdescr}
 \pnum
-\effects
+\removed{\effects
 Constructs an object of class
-\tcode{range_error}.
+\tcode{range_error}.}
 
 \pnum
 \ensures
@@ -424,9 +424,9 @@ range_error(const char* what_arg);
 
 \begin{itemdescr}
 \pnum
-\effects
+\removed{\effects
 Constructs an object of class
-\tcode{range_error}.
+\tcode{range_error}.}
 
 \pnum
 \ensures
@@ -458,9 +458,9 @@ overflow_error(const string& what_arg);
 
 \begin{itemdescr}
 \pnum
-\effects
+\removed{\effects
 Constructs an object of class
-\tcode{overflow_error}.
+\tcode{overflow_error}.}
 
 \pnum
 \ensures
@@ -474,9 +474,9 @@ overflow_error(const char* what_arg);
 
 \begin{itemdescr}
 \pnum
-\effects
+\removed{\effects
 Constructs an object of class
-\tcode{overflow_error}.
+\tcode{overflow_error}.}
 
 \pnum
 \ensures
@@ -508,9 +508,9 @@ underflow_error(const string& what_arg);
 
 \begin{itemdescr}
 \pnum
-\effects
+\removed{\effects
 Constructs an object of class
-\tcode{underflow_error}.
+\tcode{underflow_error}.}
 
 \pnum
 \ensures
@@ -524,9 +524,9 @@ underflow_error(const char* what_arg);
 
 \begin{itemdescr}
 \pnum
-\effects
+\removed{\effects
 Constructs an object of class
-\tcode{underflow_error}.
+\tcode{underflow_error}.}
 
 \pnum
 \ensures
@@ -1212,7 +1212,7 @@ error_code() noexcept;
 
 \begin{itemdescr}
 \pnum
-\effects Constructs an object of type \tcode{error_code}.
+\removed{\effects Constructs an object of type \tcode{error_code}.}
 
 \pnum
 \ensures \tcode{val_ == 0} and \tcode{cat_ == \&system_category()}.
@@ -1225,7 +1225,7 @@ error_code(int val, const error_category& cat) noexcept;
 
 \begin{itemdescr}
 \pnum
-\effects Constructs an object of type \tcode{error_code}.
+\removed{\effects Constructs an object of type \tcode{error_code}.}
 
 \pnum
 \ensures \tcode{val_ == val} and \tcode{cat_ == \&cat}.
@@ -1239,7 +1239,7 @@ template<class ErrorCodeEnum>
 
 \begin{itemdescr}
 \pnum
-\effects Constructs an object of type \tcode{error_code}.
+\removed{\effects Constructs an object of type \tcode{error_code}.}
 
 \pnum
 \ensures \tcode{*this == make_error_code(e)}.
@@ -1415,7 +1415,7 @@ error_condition() noexcept;
 
 \begin{itemdescr}
 \pnum
-\effects Constructs an object of type \tcode{error_condition}.
+\removed{\effects Constructs an object of type \tcode{error_condition}.}
 
 \pnum
 \ensures \tcode{val_ == 0} and \tcode{cat_ == \&generic_category()}.
@@ -1428,7 +1428,7 @@ error_condition(int val, const error_category& cat) noexcept;
 
 \begin{itemdescr}
 \pnum
-\effects Constructs an object of type \tcode{error_condition}.
+\removed{\effects Constructs an object of type \tcode{error_condition}.}
 
 \pnum
 \ensures \tcode{val_ == val} and \tcode{cat_ == \&cat}.
@@ -1442,7 +1442,7 @@ template<class ErrorConditionEnum>
 
 \begin{itemdescr}
 \pnum
-\effects Constructs an object of type \tcode{error_condition}.
+\removed{\effects Constructs an object of type \tcode{error_condition}.}
 
 \pnum
 \ensures \tcode{*this == make_error_condition(e)}.
@@ -1699,7 +1699,7 @@ system_error(error_code ec, const string& what_arg);
 
 \begin{itemdescr}
 \pnum
-\effects Constructs an object of class \tcode{system_error}.
+\removed{\effects Constructs an object of class \tcode{system_error}.}
 
 \pnum
 \ensures \tcode{code() == ec} and
@@ -1713,7 +1713,7 @@ system_error(error_code ec, const char* what_arg);
 
 \begin{itemdescr}
 \pnum
-\effects Constructs an object of class \tcode{system_error}.
+\removed{\effects Constructs an object of class \tcode{system_error}.}
 
 \pnum
 \ensures \tcode{code() == ec} and
@@ -1727,7 +1727,7 @@ system_error(error_code ec);
 
 \begin{itemdescr}
 \pnum
-\effects Constructs an object of class \tcode{system_error}.
+\removed{\effects Constructs an object of class \tcode{system_error}.}
 
 \pnum
 \ensures \tcode{code() == ec}.
@@ -1740,7 +1740,7 @@ system_error(int ev, const error_category& ecat, const string& what_arg);
 
 \begin{itemdescr}
 \pnum
-\effects Constructs an object of class \tcode{system_error}.
+\removed{\effects Constructs an object of class \tcode{system_error}.}
 
 \pnum
 \ensures \raggedright \tcode{code() == error_code(ev, ecat)} and\linebreak
@@ -1754,7 +1754,7 @@ system_error(int ev, const error_category& ecat, const char* what_arg);
 
 \begin{itemdescr}
 \pnum
-\effects Constructs an object of class \tcode{system_error}.
+\removed{\effects Constructs an object of class \tcode{system_error}.}
 
 \pnum
 \ensures \raggedright \tcode{code() == error_code(ev, ecat)} and\linebreak
@@ -1768,7 +1768,7 @@ system_error(int ev, const error_category& ecat);
 
 \begin{itemdescr}
 \pnum
-\effects Constructs an object of class \tcode{system_error}.
+\removed{\effects Constructs an object of class \tcode{system_error}.}
 
 \pnum
 \ensures \tcode{code() == error_code(ev, ecat)}.
