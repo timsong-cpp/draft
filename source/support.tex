@@ -352,8 +352,10 @@ template<class IntType>
 \pnum \effects Equivalent to:
 \tcode{return b = b << shift;}
 
-\pnum \remarks This function shall not participate in overload resolution unless
-\tcode{is_integral_v<IntType>} is \tcode{true}.
+\pnum
+\removed{\remarks This function shall not participate in overload resolution unless
+\tcode{is_integral_v<IntType>} is \tcode{true}.}
+\added{\constraints \tcode{is_integral_v<IntType>} is \tcode{true}.}
 \end{itemdescr}
 
 \indexlibrarymember{operator<<}{byte}%
@@ -369,8 +371,10 @@ return static_cast<byte>(static_cast<unsigned char>(
 	                   static_cast<unsigned int>(b) << shift));
 \end{codeblock}
 
-\pnum \remarks This function shall not participate in overload resolution unless
-\tcode{is_integral_v<IntType>} is \tcode{true}.
+\pnum
+\removed{\remarks This function shall not participate in overload resolution unless
+\tcode{is_integral_v<IntType>} is \tcode{true}.}
+\added{\constraints \tcode{is_integral_v<IntType>} is \tcode{true}.}
 \end{itemdescr}
 
 \indexlibrarymember{operator>>=}{byte}%
@@ -383,8 +387,10 @@ template<class IntType>
 \pnum \effects Equivalent to:
 \tcode{return b >> shift;}
 
-\pnum \remarks This function shall not participate in overload resolution unless
-\tcode{is_integral_v<IntType>} is \tcode{true}.
+\pnum
+\removed{\remarks This function shall not participate in overload resolution unless
+\tcode{is_integral_v<IntType>} is \tcode{true}.}
+\added{\constraints \tcode{is_integral_v<IntType>} is \tcode{true}.}
 \end{itemdescr}
 
 \indexlibrarymember{operator>>}{byte}%
@@ -400,8 +406,10 @@ return static_cast<byte>(static_cast<unsigned char>(
 	                   static_cast<unsigned int>(b) >> shift));
 \end{codeblock}
 
-\pnum \remarks This function shall not participate in overload resolution unless
-\tcode{is_integral_v<IntType>} is \tcode{true}.
+\pnum
+\removed{\remarks This function shall not participate in overload resolution unless
+\tcode{is_integral_v<IntType>} is \tcode{true}.}
+\added{\constraints \tcode{is_integral_v<IntType>} is \tcode{true}.}
 \end{itemdescr}
 
 \indexlibrarymember{operator"|=}{byte}%
@@ -492,8 +500,10 @@ template<class IntType>
 \begin{itemdescr}
 \pnum \effects Equivalent to: \tcode{return static_cast<IntType>(b);}
 
-\pnum \remarks This function shall not participate in overload resolution unless
-\tcode{is_integral_v<IntType>} is \tcode{true}.
+\pnum
+\removed{\remarks This function shall not participate in overload resolution unless
+\tcode{is_integral_v<IntType>} is \tcode{true}.}
+\added{\constraints \tcode{is_integral_v<IntType>} is \tcode{true}.}
 \end{itemdescr}
 
 \rSec1[support.limits]{Implementation properties}
@@ -3170,6 +3180,7 @@ as exceptions by the implementation to report the execution of an invalid
 \tcode{dynamic_cast}
 expression\iref{expr.dynamic.cast}.
 
+\begin{removedblock}
 \indexlibrary{\idxcode{bad_cast}!constructor}%
 \begin{itemdecl}
 bad_cast() noexcept;
@@ -3183,6 +3194,9 @@ Constructs an object of class
 \end{itemdescr}
 
 \indexlibrary{\idxcode{bad_cast}!constructor}%
+\end{removedblock}
+
+\begin{removedblock}
 \indexlibrarymember{operator=}{bad_cast}%
 \begin{itemdecl}
 bad_cast(const bad_cast&) noexcept;
@@ -3195,6 +3209,7 @@ bad_cast& operator=(const bad_cast&) noexcept;
 Copies an object of class
 \tcode{bad_cast}.
 \end{itemdescr}
+\end{removedblock}
 
 \indexlibrarymember{what}{bad_cast}%
 \begin{itemdecl}
@@ -3237,6 +3252,7 @@ in a
 \tcode{typeid}
 expression\iref{expr.typeid}.
 
+\begin{removedblock}
 \indexlibrary{\idxcode{bad_typeid}!constructor}%
 \begin{itemdecl}
 bad_typeid() noexcept;
@@ -3248,7 +3264,9 @@ bad_typeid() noexcept;
 Constructs an object of class
 \tcode{bad_typeid}.
 \end{itemdescr}
+\end{removedblock}
 
+\begin{removedblock}
 \indexlibrary{\idxcode{bad_typeid}!constructor}%
 \indexlibrarymember{operator=}{bad_typeid}%
 \begin{itemdecl}
@@ -3262,6 +3280,7 @@ bad_typeid& operator=(const bad_typeid&) noexcept;
 Copies an object of class
 \tcode{bad_typeid}.
 \end{itemdescr}
+\end{removedblock}
 
 \indexlibrarymember{what}{bad_typeid}%
 \begin{itemdecl}
@@ -3439,6 +3458,7 @@ the following postcondition: If two objects \tcode{lhs} and \tcode{rhs} both hav
 dynamic type \tcode{T} and \tcode{lhs} is a copy of \tcode{rhs}, then
 \tcode{strcmp(lhs.what(), rhs.what())} shall equal 0.
 
+\begin{removedblock}
 \indexlibrary{\idxcode{exception}!constructor}%
 \begin{itemdecl}
 exception() noexcept;
@@ -3450,6 +3470,7 @@ exception() noexcept;
 Constructs an object of class
 \tcode{exception}.
 \end{itemdescr}
+\end{removedblock}
 
 \indexlibrary{\idxcode{exception}!constructor}%
 \indexlibrarymember{operator=}{exception}%
@@ -3459,11 +3480,7 @@ exception& operator=(const exception& rhs) noexcept;
 \end{itemdecl}
 
 \begin{itemdescr}
-\pnum
-\effects
-Copies an
-\tcode{exception}
-object.
+\removed{\pnum \effects Copies an \tcode{exception} object.}
 
 \pnum
 \ensures If \tcode{*this} and \tcode{rhs} both have dynamic type \tcode{exception}
@@ -3525,6 +3542,7 @@ referenced by the \tcode{exception_ptr}
 returned from a call to \tcode{current_exception}\iref{propagation}
 when the currently active exception object fails to copy.
 
+\begin{removedblock}
 \indexlibrary{\idxcode{bad_exception}!constructor}%
 \begin{itemdecl}
 bad_exception() noexcept;
@@ -3536,7 +3554,9 @@ bad_exception() noexcept;
 Constructs an object of class
 \tcode{bad_exception}.
 \end{itemdescr}
+\end{removedblock}
 
+\begin{removedblock}
 \indexlibrary{\idxcode{bad_exception}!constructor}%
 \indexlibrarymember{operator=}{bad_exception}%
 \begin{itemdecl}
@@ -3550,6 +3570,7 @@ bad_exception& operator=(const bad_exception&) noexcept;
 Copies an object of class
 \tcode{bad_exception}.
 \end{itemdescr}
+\end{removedblock}
 
 \indexlibrarymember{what}{bad_exception}%
 \begin{itemdecl}
