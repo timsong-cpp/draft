@@ -349,13 +349,14 @@ template<class IntType>
 \end{itemdecl}
 
 \begin{itemdescr}
+\added{\constraints \tcode{is_integral_v<IntType>} is \tcode{true}.}
+
 \pnum \effects Equivalent to:
 \tcode{return b = b << shift;}
 
 \pnum
 \removed{\remarks This function shall not participate in overload resolution unless
 \tcode{is_integral_v<IntType>} is \tcode{true}.}
-\added{\constraints \tcode{is_integral_v<IntType>} is \tcode{true}.}
 \end{itemdescr}
 
 \indexlibrarymember{operator<<}{byte}%
@@ -365,6 +366,8 @@ template<class IntType>
 \end{itemdecl}
 
 \begin{itemdescr}
+\added{\constraints \tcode{is_integral_v<IntType>} is \tcode{true}.}
+
 \pnum \effects Equivalent to:
 \begin{codeblock}
 return static_cast<byte>(static_cast<unsigned char>(
@@ -374,7 +377,6 @@ return static_cast<byte>(static_cast<unsigned char>(
 \pnum
 \removed{\remarks This function shall not participate in overload resolution unless
 \tcode{is_integral_v<IntType>} is \tcode{true}.}
-\added{\constraints \tcode{is_integral_v<IntType>} is \tcode{true}.}
 \end{itemdescr}
 
 \indexlibrarymember{operator>>=}{byte}%
@@ -384,13 +386,14 @@ template<class IntType>
 \end{itemdecl}
 
 \begin{itemdescr}
+\added{\constraints \tcode{is_integral_v<IntType>} is \tcode{true}.}
+
 \pnum \effects Equivalent to:
 \tcode{return b >> shift;}
 
 \pnum
 \removed{\remarks This function shall not participate in overload resolution unless
 \tcode{is_integral_v<IntType>} is \tcode{true}.}
-\added{\constraints \tcode{is_integral_v<IntType>} is \tcode{true}.}
 \end{itemdescr}
 
 \indexlibrarymember{operator>>}{byte}%
@@ -400,6 +403,8 @@ template<class IntType>
 \end{itemdecl}
 
 \begin{itemdescr}
+\added{\constraints \tcode{is_integral_v<IntType>} is \tcode{true}.}
+
 \pnum \effects Equivalent to:
 \begin{codeblock}
 return static_cast<byte>(static_cast<unsigned char>(
@@ -409,7 +414,6 @@ return static_cast<byte>(static_cast<unsigned char>(
 \pnum
 \removed{\remarks This function shall not participate in overload resolution unless
 \tcode{is_integral_v<IntType>} is \tcode{true}.}
-\added{\constraints \tcode{is_integral_v<IntType>} is \tcode{true}.}
 \end{itemdescr}
 
 \indexlibrarymember{operator"|=}{byte}%
@@ -498,12 +502,13 @@ template<class IntType>
 \end{itemdecl}
 
 \begin{itemdescr}
+\added{\constraints \tcode{is_integral_v<IntType>} is \tcode{true}.}
+
 \pnum \effects Equivalent to: \tcode{return static_cast<IntType>(b);}
 
 \pnum
 \removed{\remarks This function shall not participate in overload resolution unless
 \tcode{is_integral_v<IntType>} is \tcode{true}.}
-\added{\constraints \tcode{is_integral_v<IntType>} is \tcode{true}.}
 \end{itemdescr}
 
 \rSec1[support.limits]{Implementation properties}
@@ -2752,6 +2757,7 @@ The class
 defines the type of objects thrown as
 exceptions by the implementation to report a failure to allocate storage.
 
+\begin{removedblock}
 \indexlibrary{\idxcode{bad_alloc}!constructor}%
 \begin{itemdecl}
 bad_alloc() noexcept;
@@ -2763,7 +2769,9 @@ bad_alloc() noexcept;
 Constructs an object of class
 \tcode{bad_alloc}.
 \end{itemdescr}
+\end{removedblock}
 
+\begin{removedblock}
 \indexlibrary{\idxcode{bad_alloc}!constructor}%
 \indexlibrarymember{operator=}{bad_alloc}%
 \begin{itemdecl}
@@ -2777,6 +2785,7 @@ bad_alloc& operator=(const bad_alloc&) noexcept;
 Copies an object of class
 \tcode{bad_alloc}.
 \end{itemdescr}
+\end{removedblock}
 
 \indexlibrarymember{what}{bad_alloc}%
 \begin{itemdecl}
@@ -2814,6 +2823,7 @@ exceptions by the implementation to report an attempt to allocate an array of si
 less than zero or
 greater than an \impldef{maximum size of an allocated object} limit\iref{expr.new}.
 
+\begin{removedblock}
 \indexlibrary{\idxcode{bad_array_new_length}!constructor}%
 \begin{itemdecl}
 bad_array_new_length() noexcept;
@@ -2823,6 +2833,7 @@ bad_array_new_length() noexcept;
 \pnum
 \effects Constructs an object of class \tcode{bad_array_new_length}.
 \end{itemdescr}
+\end{removedblock}
 
 \indexlibrarymember{what}{bad_array_new_length}%
 \begin{itemdecl}
