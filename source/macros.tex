@@ -7,8 +7,8 @@
 \definecolor{remclr}{rgb}{1,0,0}
 \definecolor{noteclr}{rgb}{0,0,1}
 
-\renewcommand{\added}[1]{\textcolor{addclr}{\uline{#1}}}
-\newcommand{\removed}[1]{\textcolor{remclr}{\sout{#1}}}
+\renewcommand{\added}[1]{{\renewcommand{\tcode}[1]{\mbox{\texttt{##1}}}\textcolor{addclr}{\uline{#1}}}}
+\newcommand{\removed}[1]{{\renewcommand{\tcode}[1]{\mbox{\texttt{##1}}}\textcolor{remclr}{\sout{#1}}}}
 \renewcommand{\changed}[2]{\removed{#1}\added{#2}}
 
 \newcommand{\nbc}[1]{[#1]\ }
