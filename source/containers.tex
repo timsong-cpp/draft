@@ -3456,9 +3456,16 @@ template<class T, size_t N>
 \end{itemdecl}
 
 \begin{itemdescr}
+\removed{
 \pnum\remarks
 This function shall not participate in overload resolution
 unless \tcode{N == 0} or \tcode{is_swappable_v<T>} is \tcode{true}.
+}
+
+\added{
+\pnum
+\constraints \tcode{N == 0} or \tcode{is_swappable_v<T>} is \tcode{true}.
+}
 
 \pnum\effects
 As if by \tcode{x.swap(y)}.
@@ -6540,17 +6547,24 @@ template<class P>
 \end{itemdecl}
 
 \begin{itemdescr}
+\added{
+\pnum
+\constraints \tcode{is_constructible_v<value_type, P\&\&>} is \tcode{true}.
+}
+
 \pnum
 \effects
 The first form is equivalent to
 \tcode{return emplace(std::forward<P>(x))}. The second form is
 equivalent to \tcode{return emplace_hint(position, std::forward<P>(x))}.
 
+\removed{
 \pnum
 \remarks
 These signatures shall not participate in overload resolution
 unless \tcode{is_constructible_v<value_type, P\&\&>} is
 \tcode{true}.
+}
 \end{itemdescr}
 
 \indexlibrarymember{try_emplace}{map}%
@@ -7015,17 +7029,24 @@ template<class P> iterator insert(const_iterator position, P&& x);
 \end{itemdecl}
 
 \begin{itemdescr}
+\added{
+\pnum
+\constraints \tcode{is_constructible_v<value_type, P\&\&>} is \tcode{true}.
+}
+
 \pnum
 \effects
 The first form is equivalent to
 \tcode{return emplace(std::forward<P>(x))}. The second form is
 equivalent to \tcode{return emplace_hint(position, std::forward<P>(x))}.
 
+\removed{
 \pnum
 \remarks
 These signatures shall not participate in overload resolution
 unless \tcode{is_constructible_v<value_type, P\&\&>} is
 \tcode{true}.
+}
 \end{itemdescr}
 
 \rSec3[multimap.erasure]{Erasure}
@@ -8143,12 +8164,19 @@ template<class P>
 \end{itemdecl}
 
 \begin{itemdescr}
+\added{
+\pnum
+\constraints \tcode{is_constructible_v<value_type, P\&\&>} is \tcode{true}.
+}
+
 \pnum
 \effects Equivalent to: \tcode{return emplace(std::forward<P>(obj));}
 
+\removed{
 \pnum
 \remarks This signature shall not participate in overload resolution
 unless \tcode{is_constructible_v<value_type, P\&\&>} is \tcode{true}.
+}
 \end{itemdescr}
 
 \indexlibrarymember{unordered_map}{insert}%
@@ -8158,13 +8186,20 @@ template<class P>
 \end{itemdecl}
 
 \begin{itemdescr}
+\added{
+\pnum
+\constraints \tcode{is_constructible_v<value_type, P\&\&>} is \tcode{true}.
+}
+
 \pnum
 \effects Equivalent to:
 \tcode{return emplace_hint(hint, std::forward<P>(obj));}
 
+\removed{
 \pnum
 \remarks This signature shall not participate in overload resolution
 unless \tcode{is_constructible_v<value_type, P\&\&>} is \tcode{true}.
+}
 \end{itemdescr}
 
 \indexlibrarymember{try_emplace}{unordered_map}%
@@ -8664,12 +8699,19 @@ template<class P>
 \end{itemdecl}
 
 \begin{itemdescr}
+\added{
+\pnum
+\constraints \tcode{is_constructible_v<value_type, P\&\&>} is \tcode{true}.
+}
+
 \pnum
 \effects Equivalent to: \tcode{return emplace(std::forward<P>(obj));}
 
+\removed{
 \pnum
 \remarks This signature shall not participate in overload resolution
 unless \tcode{is_constructible_v<value_type, P\&\&>} is \tcode{true}.
+}
 \end{itemdescr}
 
 \indexlibrarymember{unordered_multimap}{insert}%
@@ -8679,13 +8721,20 @@ template<class P>
 \end{itemdecl}
 
 \begin{itemdescr}
+\added{
+\pnum
+\constraints \tcode{is_constructible_v<value_type, P\&\&>} is \tcode{true}.
+}
+
 \pnum
 \effects Equivalent to:
 \tcode{return emplace_hint(hint, std::forward<P>(obj));}
 
+\removed{
 \pnum
 \remarks This signature shall not participate in overload resolution
 unless \tcode{is_constructible_v<value_type, P\&\&>} is \tcode{true}.
+}
 \end{itemdescr}
 
 \rSec3[unord.multimap.erasure]{Erasure}
@@ -9678,10 +9727,17 @@ template<class T, class Container>
 \end{itemdecl}
 
 \begin{itemdescr}
+\removed{
 \pnum
 \remarks
 This function shall not participate in overload resolution
 unless \tcode{is_swappable_v<Container>} is \tcode{true}.
+}
+
+\added{
+\pnum
+\constraints \tcode{is_swappable_v<Container>} is \tcode{true}.
+}
 
 \pnum
 \effects As if by \tcode{x.swap(y)}.
@@ -9982,11 +10038,19 @@ template<class T, class Container, class Compare>
 \end{itemdecl}
 
 \begin{itemdescr}
+\removed{
 \pnum
 \remarks
 This function shall not participate in overload resolution
 unless \tcode{is_swappable_v<Container>} is \tcode{true} and
 \tcode{is_swappable_v<Compare>} is \tcode{true}.
+}
+
+\added{
+\pnum
+\constraints \tcode{is_swappable_v<Container>} is \tcode{true} and
+\tcode{is_swappable_v<Compare>} is \tcode{true}.
+}
 
 \pnum
 \effects As if by \tcode{x.swap(y)}.
@@ -10227,10 +10291,17 @@ template<class T, class Container>
 \end{itemdecl}
 
 \begin{itemdescr}
+\removed{
 \pnum
 \remarks
 This function shall not participate in overload resolution
 unless \tcode{is_swappable_v<Container>} is \tcode{true}.
+}
+
+\added{
+\pnum
+\constraints \tcode{is_swappable_v<Container>} is \tcode{true}.
+}
 
 \pnum
 \effects As if by \tcode{x.swap(y)}.
@@ -10403,14 +10474,21 @@ the program is ill-formed.
 constexpr span() noexcept;
 \end{itemdecl}
 \begin{itemdescr}
+\added{
+\pnum
+\constraints \tcode{Extent <= 0} is \tcode{true}.
+}
+
 \pnum
 \ensures
 \tcode{size() == 0 \&\& data() == nullptr}.
 
+\removed{
 \pnum
 \remarks
 This constructor shall not participate in overload resolution
 unless \tcode{Extent <= 0} is \tcode{true}.
+}
 \end{itemdescr}
 
 \indexlibrary{\idxcode{span}!constructor}%
@@ -10467,6 +10545,15 @@ template<size_t N> constexpr span(array<value_type, N>& arr) noexcept;
 template<size_t N> constexpr span(const array<value_type, N>& arr) noexcept;
 \end{itemdecl}
 \begin{itemdescr}
+\begin{addedblock}
+\pnum
+\constraints
+\begin{itemize}
+\item \tcode{extent == dynamic_extent || N == extent} is \tcode{true}, and
+\item \tcode{remove_pointer_t<decltype(data(arr))>(*)[]} is convertible to \tcode{ElementType(*)[]}.
+\end{itemize}
+\end{addedblock}
+
 \pnum
 \effects
 Constructs a \tcode{span} that is a view over the supplied array.
@@ -10475,6 +10562,7 @@ Constructs a \tcode{span} that is a view over the supplied array.
 \ensures
 \tcode{size() == N \&\& data() == data(arr)}.
 
+\begin{removedblock}
 \pnum
 \remarks
 These constructors shall not participate in overload resolution unless:
@@ -10482,6 +10570,7 @@ These constructors shall not participate in overload resolution unless:
 \item \tcode{extent == dynamic_extent || N == extent} is \tcode{true}, and
 \item \tcode{remove_pointer_t<decltype(data(arr))>(*)[]} is convertible to \tcode{ElementType(*)[]}.
 \end{itemize}
+\end{removedblock}
 \end{itemdescr}
 
 \indexlibrary{\idxcode{span}!constructor}%
@@ -10496,6 +10585,18 @@ template<class Container> constexpr span(const Container& cont);
 If \tcode{extent} is not equal to \tcode{dynamic_extent},
 then \tcode{size(cont)} shall be equal to \tcode{extent}.
 
+\begin{addedblock}
+\pnum
+\constraints
+\begin{itemize}
+\item \tcode{Container} is not a specialization of \tcode{span},
+\item \tcode{Container} is not a specialization of \tcode{array},
+\item \tcode{is_array_v<Container>} is \tcode{false},
+\item \tcode{data(cont)} and \tcode{size(cont)} are both well-formed, and
+\item \tcode{remove_pointer_t<decltype(data(cont))>(*)[]} is convertible to \tcode{ElementType(*)[]}.
+\end{itemize}
+\end{addedblock}
+
 \pnum
 \effects
 Constructs a \tcode{span} that is a view over the range \range{data(cont)}{data(cont) + size(cont)}.
@@ -10508,6 +10609,7 @@ Constructs a \tcode{span} that is a view over the range \range{data(cont)}{data(
 \throws
 What and when \tcode{data(cont)} and \tcode{size(cont)} throw.
 
+\begin{removedblock}
 \pnum
 \remarks
 These constructors shall not participate in overload resolution unless:
@@ -10518,6 +10620,7 @@ These constructors shall not participate in overload resolution unless:
 \item \tcode{data(cont)} and \tcode{size(cont)} are both well-formed, and
 \item \tcode{remove_pointer_t<decltype(data(cont))>(*)[]} is convertible to \tcode{ElementType(*)[]}.
 \end{itemize}
+\end{removedblock}
 \end{itemdescr}
 
 \indexlibrary{\idxcode{span}!constructor}%
@@ -10536,6 +10639,15 @@ template<class OtherElementType, ptrdiff_t OtherExtent>
   constexpr span(const span<OtherElementType, OtherExtent>& s) noexcept;
 \end{itemdecl}
 \begin{itemdescr}
+\begin{addedblock}
+\pnum
+\constraints
+\begin{itemize}
+\item \tcode{Extent == dynamic_extent || Extent == OtherExtent} is \tcode{true}, and
+\item \tcode{OtherElementType(*)[]} is convertible to \tcode{ElementType(*)[]}.
+\end{itemize}
+\end{addedblock}
+
 \pnum
 \effects
 Constructs a \tcode{span} that is a view over the range
@@ -10545,6 +10657,7 @@ Constructs a \tcode{span} that is a view over the range
 \ensures
 \tcode{size() == s.size() \&\& data() == s.data()}.
 
+\begin{removedblock}
 \pnum
 \remarks
 This constructor shall not participate in overload resolution unless:
@@ -10552,6 +10665,7 @@ This constructor shall not participate in overload resolution unless:
 \item \tcode{Extent == dynamic_extent || Extent == OtherExtent} is \tcode{true}, and
 \item \tcode{OtherElementType(*)[]} is convertible to \tcode{ElementType(*)[]}.
 \end{itemize}
+\end{removedblock}
 \end{itemdescr}
 
 \indexlibrary{\idxcode{operator=}!\idxcode{span}}%
@@ -10846,12 +10960,19 @@ template<class ElementType, ptrdiff_t Extent>
     as_writable_bytes(span<ElementType, Extent> s) noexcept;
 \end{itemdecl}
 \begin{itemdescr}
+\added{
+\pnum
+\constraints \tcode{is_const_v<ElementType>} is \tcode{false}.
+}
+
 \pnum
 \effects
 Equivalent to: \tcode{return \{reinterpret_cast<byte*>(s.data()), s.size_bytes()\};}
 
+\removed{
 \pnum
 \remarks
 This function shall not participate in overload resolution unless
 \tcode{is_const_v<ElementType>} is \tcode{false}.
+}
 \end{itemdescr}
