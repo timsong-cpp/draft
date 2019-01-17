@@ -349,13 +349,13 @@ template<class IntType>
 \end{itemdecl}
 
 \begin{itemdescr}
-\added{\constraints \tcode{is_integral_v<IntType>} is \tcode{true}.}
+\added{\pnum \constraints \tcode{is_integral_v<IntType>} is \tcode{true}.}
 
 \pnum \effects Equivalent to:
 \tcode{return b = b << shift;}
 
-\pnum
-\removed{\remarks This function shall not participate in overload resolution unless
+\removed{\pnum
+\remarks This function shall not participate in overload resolution unless
 \tcode{is_integral_v<IntType>} is \tcode{true}.}
 \end{itemdescr}
 
@@ -366,7 +366,7 @@ template<class IntType>
 \end{itemdecl}
 
 \begin{itemdescr}
-\added{\constraints \tcode{is_integral_v<IntType>} is \tcode{true}.}
+\added{\pnum \constraints \tcode{is_integral_v<IntType>} is \tcode{true}.}
 
 \pnum \effects Equivalent to:
 \begin{codeblock}
@@ -374,8 +374,8 @@ return static_cast<byte>(static_cast<unsigned char>(
 	                   static_cast<unsigned int>(b) << shift));
 \end{codeblock}
 
-\pnum
-\removed{\remarks This function shall not participate in overload resolution unless
+\removed{\pnum
+\remarks This function shall not participate in overload resolution unless
 \tcode{is_integral_v<IntType>} is \tcode{true}.}
 \end{itemdescr}
 
@@ -386,13 +386,13 @@ template<class IntType>
 \end{itemdecl}
 
 \begin{itemdescr}
-\added{\constraints \tcode{is_integral_v<IntType>} is \tcode{true}.}
+\added{\pnum \constraints \tcode{is_integral_v<IntType>} is \tcode{true}.}
 
 \pnum \effects Equivalent to:
 \tcode{return b >> shift;}
 
-\pnum
-\removed{\remarks This function shall not participate in overload resolution unless
+\removed{\pnum
+\remarks This function shall not participate in overload resolution unless
 \tcode{is_integral_v<IntType>} is \tcode{true}.}
 \end{itemdescr}
 
@@ -403,7 +403,7 @@ template<class IntType>
 \end{itemdecl}
 
 \begin{itemdescr}
-\added{\constraints \tcode{is_integral_v<IntType>} is \tcode{true}.}
+\added{\pnum \constraints \tcode{is_integral_v<IntType>} is \tcode{true}.}
 
 \pnum \effects Equivalent to:
 \begin{codeblock}
@@ -411,8 +411,8 @@ return static_cast<byte>(static_cast<unsigned char>(
 	                   static_cast<unsigned int>(b) >> shift));
 \end{codeblock}
 
-\pnum
-\removed{\remarks This function shall not participate in overload resolution unless
+\removed{\pnum
+\remarks This function shall not participate in overload resolution unless
 \tcode{is_integral_v<IntType>} is \tcode{true}.}
 \end{itemdescr}
 
@@ -502,12 +502,11 @@ template<class IntType>
 \end{itemdecl}
 
 \begin{itemdescr}
-\added{\constraints \tcode{is_integral_v<IntType>} is \tcode{true}.}
+\added{\pnum \constraints \tcode{is_integral_v<IntType>} is \tcode{true}.}
 
 \pnum \effects Equivalent to: \tcode{return static_cast<IntType>(b);}
 
-\pnum
-\removed{\remarks This function shall not participate in overload resolution unless
+\removed{\pnum \remarks This function shall not participate in overload resolution unless
 \tcode{is_integral_v<IntType>} is \tcode{true}.}
 \end{itemdescr}
 
@@ -2264,9 +2263,8 @@ The default behavior below may change in the future, which will require
 replacing both deallocation functions when replacing the allocation function.
 \end{note}
 
-\removed{
 \pnum
-\requires
+\changed{\requires}{\expects}
 \tcode{ptr} shall be a null pointer or
 its value shall represent the address of
 a block of memory allocated by
@@ -2276,39 +2274,14 @@ or
 \tcode{operator new(std::size_t, std::align_val_t)}
 which has not been invalidated by an intervening call to
 \tcode{operator delete}.
-}
 
-\added{
 \pnum
-\expects
-\tcode{ptr} shall be a null pointer or
-its value shall represent the address of
-a block of memory allocated by
-an earlier call to a (possibly replaced)
-\tcode{operator new(std::size_t)}
-or
-\tcode{operator new(std::size_t, std::align_val_t)}
-which has not been invalidated by an intervening call to
-\tcode{operator delete}.
-}
-
-\removed{
-\pnum
-\requires
+\changed{\requires}{\expects}
 If an implementation has strict pointer safety\iref{basic.stc.dynamic.safety}
 then \tcode{ptr} shall be a safely-derived pointer.
-}
 
-\added{
 \pnum
-\expects
-If an implementation has strict pointer safety\iref{basic.stc.dynamic.safety}
-then \tcode{ptr} shall be a safely-derived pointer.
-}
-
-\removed{
-\pnum
-\requires
+\changed{\requires}{\expects}
 If the \tcode{alignment} parameter is not present,
 \tcode{ptr} shall have been returned by an allocation function
 without an \tcode{alignment} parameter.
@@ -2318,21 +2291,6 @@ passed to the allocation function that returned \tcode{ptr}.
 If present, the \tcode{size} argument
 shall equal the \tcode{size} argument
 passed to the allocation function that returned \tcode{ptr}.
-}
-
-\added{
-\pnum
-\expects
-If the \tcode{alignment} parameter is not present,
-\tcode{ptr} shall have been returned by an allocation function
-without an \tcode{alignment} parameter.
-If present, the \tcode{alignment} argument
-shall equal the \tcode{alignment} argument
-passed to the allocation function that returned \tcode{ptr}.
-If present, the \tcode{size} argument
-shall equal the \tcode{size} argument
-passed to the allocation function that returned \tcode{ptr}.
-}
 
 \pnum
 \required
@@ -2395,9 +2353,8 @@ placement version of the \grammarterm{new-expression} throws an exception.
 \replaceable
 \replaceabledesc{either}
 
-\removed{
 \pnum
-\requires
+\changed{\requires}{\expects}
 \tcode{ptr} shall be a null pointer or
 its value shall represent the address of
 a block of memory allocated by
@@ -2407,57 +2364,20 @@ or
 \tcode{operator new(std::size_t, std::align_val_t)}
 which has not been invalidated by an intervening call to
 \tcode{operator delete}.
-}
 
-\added{
 \pnum
-\expects
-\tcode{ptr} shall be a null pointer or
-its value shall represent the address of
-a block of memory allocated by
-an earlier call to a (possibly replaced)
-\tcode{operator new(std::size_t)}
-or
-\tcode{operator new(std::size_t, std::align_val_t)}
-which has not been invalidated by an intervening call to
-\tcode{operator delete}.
-}
-
-\removed{
-\pnum
-\requires
+\changed{\requires}{\expects}
 If an implementation has strict pointer safety\iref{basic.stc.dynamic.safety}
 then \tcode{ptr} shall be a safely-derived pointer.
-}
 
-\added{
 \pnum
-\expects
-If an implementation has strict pointer safety\iref{basic.stc.dynamic.safety}
-then \tcode{ptr} shall be a safely-derived pointer.
-}
-
-\removed{
-\pnum
-\requires
+\changed{\requires}{\expects}
 If the \tcode{alignment} parameter is not present,
 \tcode{ptr} shall have been returned by an allocation function
 without an \tcode{alignment} parameter.
 If present, the \tcode{alignment} argument
 shall equal the \tcode{alignment} argument
 passed to the allocation function that returned \tcode{ptr}.
-}
-
-\added{
-\pnum
-\expects
-If the \tcode{alignment} parameter is not present,
-\tcode{ptr} shall have been returned by an allocation function
-without an \tcode{alignment} parameter.
-If present, the \tcode{alignment} argument
-shall equal the \tcode{alignment} argument
-passed to the allocation function that returned \tcode{ptr}.
-}
 
 \pnum
 \default
@@ -2598,9 +2518,8 @@ The default behavior below may change in the future, which will require
 replacing both deallocation functions when replacing the allocation function.
 \end{note}
 
-\removed{
 \pnum
-\requires
+\changed{\requires}{\expects}
 \tcode{ptr} shall be a null pointer or
 its value shall represent the address of
 a block of memory allocated by
@@ -2610,39 +2529,14 @@ or
 \tcode{operator new[](std::size_t, std::align_val_t)}
 which has not been invalidated by an intervening call to
 \tcode{operator delete[]}.
-}
 
-\added{
 \pnum
-\expects
-\tcode{ptr} shall be a null pointer or
-its value shall represent the address of
-a block of memory allocated by
-an earlier call to a (possibly replaced)
-\tcode{operator new[](std::size_t)}
-or
-\tcode{operator new[](std::size_t, std::align_val_t)}
-which has not been invalidated by an intervening call to
-\tcode{operator delete[]}.
-}
-
-\removed{
-\pnum
-\requires
+\changed{\requires}{\expects}
 If an implementation has strict pointer safety\iref{basic.stc.dynamic.safety}
 then \tcode{ptr} shall be a safely-derived pointer.
-}
 
-\added{
 \pnum
-\expects
-If an implementation has strict pointer safety\iref{basic.stc.dynamic.safety}
-then \tcode{ptr} shall be a safely-derived pointer.
-}
-
-\removed{
-\pnum
-\requires
+\changed{\requires}{\expects}
 If the \tcode{alignment} parameter is not present,
 \tcode{ptr} shall have been returned by an allocation function
 without an \tcode{alignment} parameter.
@@ -2652,21 +2546,6 @@ passed to the allocation function that returned \tcode{ptr}.
 If present, the \tcode{size} argument
 shall equal the \tcode{size} argument
 passed to the allocation function that returned \tcode{ptr}.
-}
-
-\added{
-\pnum
-\expects
-If the \tcode{alignment} parameter is not present,
-\tcode{ptr} shall have been returned by an allocation function
-without an \tcode{alignment} parameter.
-If present, the \tcode{alignment} argument
-shall equal the \tcode{alignment} argument
-passed to the allocation function that returned \tcode{ptr}.
-If present, the \tcode{size} argument
-shall equal the \tcode{size} argument
-passed to the allocation function that returned \tcode{ptr}.
-}
 
 \pnum
 \required
@@ -2710,9 +2589,8 @@ placement version of the array \grammarterm{new-expression} throws an exception.
 \replaceable
 \replaceabledesc{either}
 
-\removed{
 \pnum
-\requires
+\changed{\requires}{\expects}
 \tcode{ptr} shall be a null pointer or
 its value shall represent the address of
 a block of memory allocated by
@@ -2722,57 +2600,20 @@ or
 \tcode{operator new[](std::size_t, std::align_val_t)}
 which has not been invalidated by an intervening call to
 \tcode{operator delete[]}.
-}
 
-\added{
 \pnum
-\expects
-\tcode{ptr} shall be a null pointer or
-its value shall represent the address of
-a block of memory allocated by
-an earlier call to a (possibly replaced)
-\tcode{operator new[](std::size_t)}
-or
-\tcode{operator new[](std::size_t, std::align_val_t)}
-which has not been invalidated by an intervening call to
-\tcode{operator delete[]}.
-}
-
-\removed{
-\pnum
-\requires
+\changed{\requires}{\expects}
 If an implementation has strict pointer safety\iref{basic.stc.dynamic.safety}
 then \tcode{ptr} shall be a safely-derived pointer.
-}
 
-\added{
 \pnum
-\expects
-If an implementation has strict pointer safety\iref{basic.stc.dynamic.safety}
-then \tcode{ptr} shall be a safely-derived pointer.
-}
-
-\removed{
-\pnum
-\requires
+\changed{\requires}{\expects}
 If the \tcode{alignment} parameter is not present,
 \tcode{ptr} shall have been returned by an allocation function
 without an \tcode{alignment} parameter.
 If present, the \tcode{alignment} argument
 shall equal the \tcode{alignment} argument
 passed to the allocation function that returned \tcode{ptr}.
-}
-
-\added{
-\pnum
-\expects
-If the \tcode{alignment} parameter is not present,
-\tcode{ptr} shall have been returned by an allocation function
-without an \tcode{alignment} parameter.
-If present, the \tcode{alignment} argument
-shall equal the \tcode{alignment} argument
-passed to the allocation function that returned \tcode{ptr}.
-}
 
 \pnum
 \default
@@ -2839,19 +2680,10 @@ void operator delete(void* ptr, void*) noexcept;
 \effects
 Intentionally performs no action.
 
-\removed{
 \pnum
-\requires
+\changed{\requires}{\expects}
 If an implementation has strict pointer safety\iref{basic.stc.dynamic.safety}
 then \tcode{ptr} shall be a safely-derived pointer.
-}
-
-\added{
-\pnum
-\expects
-If an implementation has strict pointer safety\iref{basic.stc.dynamic.safety}
-then \tcode{ptr} shall be a safely-derived pointer.
-}
 
 \pnum
 \remarks
@@ -2871,19 +2703,10 @@ void operator delete[](void* ptr, void*) noexcept;
 \effects
 Intentionally performs no action.
 
-\removed{
 \pnum
-\requires
+\changed{\requires}{\expects}
 If an implementation has strict pointer safety\iref{basic.stc.dynamic.safety}
 then \tcode{ptr} shall be a safely-derived pointer.
-}
-
-\added{
-\pnum
-\expects
-If an implementation has strict pointer safety\iref{basic.stc.dynamic.safety}
-then \tcode{ptr} shall be a safely-derived pointer.
-}
 
 \pnum
 \remarks
@@ -3108,7 +2931,7 @@ template<class T> [[nodiscard]] constexpr T* launder(T* p) noexcept;
 
 \begin{itemdescr}
 \pnum
-\requires
+\changed{\requires}{\expects}
 \tcode{p} represents the address \placeholder{A} of a byte in memory.
 An object \placeholder{X} that is within its lifetime\iref{basic.life}
 and whose type is similar\iref{conv.qual} to \tcode{T}
@@ -3896,7 +3719,7 @@ using exception_ptr = @\unspec@;
 The type \tcode{exception_ptr} can be used to refer to an exception object.
 
 \pnum
-\tcode{exception_ptr} shall satisfy the requirements of
+\tcode{exception_ptr} \changed{shall satisfy}{meets} the requirements of
 \oldconcept{NullablePointer} (\tref{nullablepointer}).
 
 \pnum
@@ -3959,8 +3782,9 @@ recursion.\end{note}
 \end{itemdecl}
 
 \begin{itemdescr}
-\removed{\pnum \requires \tcode{p} shall not be a null pointer.}
-\added{\pnum \expects \tcode{p} shall not be a null pointer.}
+\pnum
+\changed{\requires}{\expects}
+\tcode{p} shall not be a null pointer.
 
 \pnum
 \throws The exception object to which \tcode{p} refers.
@@ -4059,8 +3883,9 @@ template<class T> [[noreturn]] void throw_with_nested(T&& t);
 \pnum
 Let \tcode{U} be \tcode{decay_t<T>}.
 
-\removed{\pnum \requires \tcode{U} shall be \oldconcept{CopyConstructible}.}
-\added{\pnum \mandates \tcode{U} shall be \oldconcept{CopyConstructible}.}
+\pnum 
+\changed{\requires}{\expects}
+\tcode{U} shall \changed{be}{meet the} \oldconcept{CopyConstructible} \added{requirements}.
 
 \pnum
 \throws
