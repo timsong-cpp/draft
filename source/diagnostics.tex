@@ -202,7 +202,7 @@ invalid_argument(const char* what_arg);
 \end{itemdecl}
 
 \begin{itemdescr}
-\removed{ \pnum \effects Constructs an object of class \tcode{invalid_argument}.}
+\removed{\pnum \effects Constructs an object of class \tcode{invalid_argument}.}
 
 \pnum
 \ensures
@@ -326,7 +326,7 @@ runtime_error(const string& what_arg);
 \end{itemdecl}
 
 \begin{itemdescr}
-\removed{ \pnum \effects Constructs an object of class \tcode{runtime_error}.}
+\removed{\pnum \effects Constructs an object of class \tcode{runtime_error}.}
 
 \pnum
 \ensures
@@ -472,7 +472,7 @@ underflow_error(const char* what_arg);
 \end{itemdecl}
 
 \begin{itemdescr}
-\removed{
+\removed{%
 \pnum
 \effects
 Constructs an object of class \tcode{underflow_error}.
@@ -1319,6 +1319,12 @@ template<class charT, class traits>
 \pnum
 \effects
 As if by: \tcode{os << ec.category().name() << ':' << ec.value();}
+
+\added{%
+\pnum
+\returns
+\tcode{os}.
+}
 \end{itemdescr}
 
 
