@@ -8,10 +8,9 @@
 \def\hd{\begin{tabular}{ll}
           \textbf{Document Number:} & {\larger\docno}             \\
           \textbf{Date:}            & \reldate                    \\
-          \textbf{Revises:}         & \prevdocno                  \\
-          \textbf{Reply to:}        & Richard Smith               \\
-                                    & Google Inc                  \\
-                                    & cxxeditor@gmail.com
+          \textbf{Reply to:}        & Marshall Clow               \\
+                                    & CppAlliance                 \\
+                                    & mclow.lists@gmail.com
           \end{tabular}
 }
 \newlength{\hdwidth}
@@ -22,10 +21,42 @@
 \vspace{2.5cm}
 \begin{center}
 \textbf{\Huge
-Working Draft, Standard for Programming Language \Cpp{}}
+Mandating the Standard Library:\\Clause 18 - Diagnostics library}
 \end{center}
+
+With the adoption of P0788R3, we have a new way of specifying requirements for the
+library clauses of the standard. This is one of a series of papers reformulating the
+requirements into the new format. This effort was strongly influenced by the informational
+paper P1369R0.
+
+As a drive-by fix, I have removed a bunch of empty descriptions of the form: "Effects: Constructs an object of class \tcode{Foo}."
+
+The entire clause is reproduced here, but the changes are confined to a few sections:
+
+\begin{itemize}
+\item{logic.error                       \ref{logic.error}}
+\item{domain.error                      \ref{domain.error}}
+\item{invalid.argument                  \ref{invalid.argument}}
+\item{length.error                      \ref{length.error}}
+\item{out.of.range                      \ref{out.of.range}}
+\item{runtime.error                     \ref{runtime.error}}
+\item{range.error                       \ref{range.error}}
+\item{overflow.error                    \ref{overflow.error}}
+\item{underflow.error                   \ref{underflow.error}}
+\item{syserr.errcat.virtuals            \ref{syserr.errcat.virtuals}}
+\item{syserr.errcat.nonvirtuals         \ref{syserr.errcat.nonvirtuals}}
+\item{syserr.errcode.constructors       \ref{syserr.errcode.constructors}}
+\item{syserr.errcode.modifiers          \ref{syserr.errcode.modifiers}}
+\item{syserr.errcondition.constructors  \ref{syserr.errcondition.constructors}}
+\item{syserr.errcondition.modifiers     \ref{syserr.errcondition.modifiers}}
+\item{syserr.syserr.members             \ref{syserr.syserr.members}}
+\end{itemize}
+
 \vfill
-\textbf{Note: this is an early draft. It's known to be incomplet and
-  incorrekt, and it has lots of
-  b\kern-1.2pta\kern1ptd\hspace{1.5em}for\kern-3ptmat\kern0.6ptti\raise0.15ex\hbox{n}g.}
+Help for the editors: The changes here can be viewed as latex sources with the following commands
+\begin{verbatim}
+git clone git@github.com:mclow/mandate.git
+cd mandate
+git diff master..chapter18 diagnostics.tex
+\end{verbatim}
 \newpage
