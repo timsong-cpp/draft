@@ -8,10 +8,9 @@
 \def\hd{\begin{tabular}{ll}
           \textbf{Document Number:} & {\larger\docno}             \\
           \textbf{Date:}            & \reldate                    \\
-          \textbf{Revises:}         & \prevdocno                  \\
-          \textbf{Reply to:}        & Richard Smith               \\
-                                    & Google Inc                  \\
-                                    & cxxeditor@gmail.com
+          \textbf{Reply to:}        & Marshall Clow               \\
+                                    & CppAlliance                 \\
+                                    & mclow.lists@gmail.com
           \end{tabular}
 }
 \newlength{\hdwidth}
@@ -22,10 +21,40 @@
 \vspace{2.5cm}
 \begin{center}
 \textbf{\Huge
-Working Draft, Standard for Programming Language \Cpp{}}
+Mandating the Standard Library:\\Clause 21 - Containers library}
 \end{center}
+
+With the adoption of P0788R3, we have a new way of specifying requirements for the
+library clauses of the standard. This is one of a series of papers reformulating the
+requirements into the new format. This effort was strongly influenced by the informational
+paper P1369R0.
+
+As a drive-by fix, I have removed a bunch of empty descriptions of the form: "Effects: Constructs an object of class \tcode{Foo}."
+
+The entire clause is reproduced here, but the changes are confined to a few sections:
+
+\begin{itemize}
+\item{support.types.byteops  \ref{support.types.byteops}}
+\item{new.delete.single      \ref{new.delete.single}}
+\item{new.delete.array       \ref{new.delete.array}}
+\item{new.delete.placement   \ref{new.delete.placement}}
+\item{bad.alloc              \ref{bad.alloc}}
+\item{new.badlength          \ref{new.badlength}}
+\item{ptr.launder            \ref{ptr.launder}}
+\item{bad.cast               \ref{bad.cast}}
+\item{bad.typeid             \ref{bad.typeid}}
+\item{exception              \ref{exception}}
+\item{bad.exception          \ref{bad.exception}}
+\item{propagation            \ref{propagation}}
+\item{except.nested          \ref{except.nested}}
+\item{support.initlist.cons  \ref{support.initlist.cons}}
+\end{itemize}
+
 \vfill
-\textbf{Note: this is an early draft. It's known to be incomplet and
-  incorrekt, and it has lots of
-  b\kern-1.2pta\kern1ptd\hspace{1.5em}for\kern-3ptmat\kern0.6ptti\raise0.15ex\hbox{n}g.}
+Help for the editors: The changes here can be viewed as latex sources with the following commands
+\begin{verbatim}
+git clone git@github.com:mclow/mandate.git
+cd mandate
+git diff master..chapter21 containers.tex
+\end{verbatim}
 \newpage
