@@ -1192,13 +1192,12 @@ template<class ErrorCodeEnum>
 \begin{itemdescr}
 \removed{\pnum \effects Constructs an object of type \tcode{error_code}.}
 
-\added{\constraints \tcode{is_error_code_enum_v<ErrorCodeEnum>} is \tcode{true}.}
+\added{\pnum \constraints \tcode{is_error_code_enum_v<ErrorCodeEnum>} is \tcode{true}.}
 
 \pnum
 \ensures \tcode{*this == make_error_code(e)}.
 
-\pnum
-\removed{\remarks \raggedright This constructor shall not participate in overload resolution unless\linebreak
+\removed{\pnum \remarks \raggedright This constructor shall not participate in overload resolution unless\linebreak
 \tcode{is_error_code_enum_v<ErrorCodeEnum>} is \tcode{true}.}
 
 \end{itemdescr}
@@ -1222,7 +1221,7 @@ template<class ErrorCodeEnum>
 \end{itemdecl}
 
 \begin{itemdescr}
-\added{\constraints \tcode{is_error_code_enum_v<ErrorCodeEnum>} is \tcode{true}.}
+\added{\pnum \constraints \tcode{is_error_code_enum_v<ErrorCodeEnum>} is \tcode{true}.}
 
 \pnum
 \ensures \tcode{*this == make_error_code(e)}.
@@ -1230,8 +1229,7 @@ template<class ErrorCodeEnum>
 \pnum
 \returns \tcode{*this}.
 
-\pnum
-\removed{\remarks \raggedright This operator shall not participate in overload resolution unless\linebreak
+\removed{\pnum \remarks \raggedright This operator shall not participate in overload resolution unless\linebreak
 \tcode{is_error_code_enum_v<ErrorCodeEnum>} is \tcode{true}.}
 
 \end{itemdescr}
@@ -1398,13 +1396,12 @@ template<class ErrorConditionEnum>
 \begin{itemdescr}
 \removed{\pnum \effects Constructs an object of type \tcode{error_condition}.}
 
-\added{\constraints \tcode{is_error_code_enum_v<ErrorCodeEnum>} is \tcode{true}.}
+\added{\pnum \constraints \tcode{is_error_code_enum_v<ErrorCodeEnum>} is \tcode{true}.}
 
 \pnum
 \ensures \tcode{*this == make_error_condition(e)}.
 
-\pnum
-\removed{\remarks \raggedright This constructor shall not participate in overload resolution unless\linebreak
+\removed{\pnum \remarks \raggedright This constructor shall not participate in overload resolution unless\linebreak
 \tcode{is_error_condition_enum_v<ErrorConditionEnum>} is \tcode{true}.}
 \end{itemdescr}
 
@@ -1428,7 +1425,7 @@ template<class ErrorConditionEnum>
 \end{itemdecl}
 
 \begin{itemdescr}
-\added{\constraints \tcode{is_error_code_enum_v<ErrorCodeEnum>} is \tcode{true}.}
+\added{\pnum \constraints \tcode{is_error_code_enum_v<ErrorCodeEnum>} is \tcode{true}.}
 
 \pnum
 \ensures \tcode{*this == make_error_condition(e)}.
@@ -1436,8 +1433,7 @@ template<class ErrorConditionEnum>
 \pnum
 \returns \tcode{*this}.
 
-\pnum
-\removed{\remarks \raggedright This operator shall not participate in overload resolution unless\linebreak
+\removed{\pnum \remarks \raggedright This operator shall not participate in overload resolution unless\linebreak
 \tcode{is_error_condition_enum_v<ErrorConditionEnum>} is \tcode{true}.}
 \end{itemdescr}
 
